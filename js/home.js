@@ -2,7 +2,7 @@
 const enterBtn = document.querySelector('.enterbtn');
 console.log(enterBtn);
 enterBtn.addEventListener('click', () => {
-    window.location.href = "enterroom-separate.html";
+    window.location.href = "loading.html";
     console.log('123');
 });
 
