@@ -4,111 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-
-        .container {
-            width: 100vw;
-            height: 100vh;
-            background-image: url("img/homepic.png");
-            position: absolute;
-            /* display: flex;
-            flex-direction: column;
-            align-content: center;
-            justify-self: center; */
-        }
-
-        .mask {
-            opacity: 0.2;
-        }
-
-        .logo {
-            width: 100px;
-            height: 50px;
-            margin: 20px;
-            background-color: rgba(0, 139, 139, 0.5);
-            border-radius: 5px;
-            color: white;
-            text-align: center;
-            line-height: 50px;
-        }
-
-        .button {
-            position: relative;
-            top: 60%;
-            left: 50%;
-            width: 300px;
-            height: 200px;
-            transform: translate(-150px, -100px);
-        }
-
-        .enterbtn {
-            width: 300px;
-            height: 50px;
-            margin: auto;
-            margin-bottom: 20px;
-            font-size: 22px;
-            background-color: darkcyan;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .madebybtn {
-            width: 300px;
-            height: 50px;
-            margin: auto;
-            margin-top: 0;
-            font-size: 18px;
-            background-color: rgba(0, 139, 139, 0.8);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .membersbox {
-            position: relative;
-            padding: 30px 200px;
-            margin: auto;
-            bottom: 10%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-        }
-
-        .words {
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        p {
-            font-size: 20px;
-        }
-
-        .closeM {
-            padding: 10px;
-            background-color: darkcyan;
-            border: none;
-            border-radius: 2px;
-            position: relative;
-            right: -110%;
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
     <div class="container">
-        <div class="logo">LOGO</div>
+        <div class="logo-area">
+            <img src="img/logo.png" alt="logo" class="logo">
+            <a href="#"></a>
+        </div>
         <div class="button">
-            <button type="button" class="enterbtn">Enter Room</button>
+            <button type="button" class="enterbtn">View 3D</button>
             <button type="button" class="madebybtn">Made By</button>
         </div>
         <div class="membersbox">
@@ -124,12 +29,7 @@
         </div>
     </div>
     
-    <script>
-        const enterBtn = document.querySelector('.enter');
-        // console.log(enterBtn);
-        enterBtn.addEventListener('click', () => {
-            console.log('123');
-        })
-    </script>
+    <script src="js/home.js"></script>
+
 </body>
 </html>

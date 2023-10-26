@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+
+.nav {
+    width: 100vw;
+    position: fixed;
+    display: flex;
+}
+
+.logo-area, .exit-area {
+    width: 50%;
+    cursor: pointer;
+}
+
+.logo {
+    width: 150px;
+    margin: 20px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+.exit {
+    height: 40px;
+    margin: 20px;
+    float: right;
+}
+
+.bottom {
+    width: calc(100% - 40px);
+    height: 35%;
+    margin: 20px;
+    /* background-color: brown; */
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+}
+
+.question {
+    width: 40px;
+}
+
+.question-area {
+    width: calc(90% - 80px);
+    height: 90%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 5px;
+}

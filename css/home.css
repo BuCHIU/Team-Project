@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../img/homepic.png");
+    position: absolute;
+    /* display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-self: center; */
+}
+
+.mask {
+    opacity: 0.2;
+}
+
+.logo {
+    width: 150px;
+    /* height: 50px; */
+    margin: 20px;
+    /* background-color: rgba(0, 139, 139, 0.5); */
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.button {
+    position: relative;
+    top: 60%;
+    left: 50%;
+    width: 300px;
+    height: 200px;
+    transform: translate(-150px, -100px);
+}
+
+.enterbtn {
+    width: 300px;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 22px;
+    background-color: white;
+    color: rgb(123, 187, 187);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.enterbtn:hover {
+    color: rgb(52, 130, 130);
+}
+
+.madebybtn {
+    width: 300px;
+    height: 50px;
+    margin: auto;
+    margin-top: 0;
+    font-size: 18px;
+    background-color: rgb(123, 187, 187);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.madebybtn:hover {
+    background-color: rgb(52, 130, 130);
+}
+
+.membersbox {
+    position: relative;
+    width: 50%;
+    padding: 20px 50px 80px 50px;
+    margin: -100px 20px;
+    margin: auto;
+    bottom: 10%;
+    /* left: calc(50% - 370px); */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: none;
+}
+
+.showup {
+    display: block;
+}
+
+
+.words {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    font-size: 20px;
+}
+
+.closeM {
+    padding: 10px;
+    background-color: darkcyan;
+    border: none;
+    border-radius: 2px;
+    float: right;
+    cursor: pointer;
+}

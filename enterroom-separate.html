@@ -4,17 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enter Room</title>
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        body {
-            margin: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="css/enter.css">
 </head>
 <body>
-    <div id="container"></div>
+    <div id="container">
+        <div class="nav">
+            <div class="logo-area">
+                <img src="img/logo.png" alt="logo" class="logo">
+            </div>
+            <div class="exit-area">
+                <img src="img/exit.png" alt="exit" class="exit">
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="icon">
+                <img src="img/question2.png" alt="question" class="question">
+            </div>
+            <!-- <div class="question-area"></div> -->
+        </div>
+    </div>
     
     <script type="importmap">
         {
@@ -25,6 +33,7 @@
         }
 	</script>
     <script type="module" src="js/all_model.js"></script>
+    <script src="js/box.js"></script>
     
 </body>
 </html>
