@@ -5,7 +5,6 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-
 let mixer;
 
 // 射線及鼠標
@@ -29,7 +28,7 @@ scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04
 
 // 攝影機
 const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 3000);
-camera.position.set(1000, 150, 100);
+camera.position.set(1000, 100, 130);
 
 // 輔助座標軸
 // const axesHelper = new THREE.AxesHelper(1000);
@@ -38,7 +37,7 @@ camera.position.set(1000, 150, 100);
 
 // 鼠標控制
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 150, 100);
+controls.target.set(0, 100, 130);
 controls.update();
 
 
@@ -158,7 +157,7 @@ let ClockLIsAnimating = false;
 const loaderClockL = new GLTFLoader();
 let modelClockL, clipClockL, mixerClockL, actionClockL;
 loaderClockL.load('model/clock/CLOCK_L.glb', function (gltf) {
-    
+
     modelClockL = gltf.scene;
     modelClockL.position.set(0, 0, 0);
     modelClockL.scale.set(1, 1, 1);
@@ -173,14 +172,14 @@ loaderClockL.load('model/clock/CLOCK_L.glb', function (gltf) {
         // if (ClockLIsAnimating) {
         // }
     }
-    
+
 });
 
 // 模型時鐘時針
 const loaderClockS = new GLTFLoader();
 let modelClockS, clipClockS, actionClockS, mixerClockS;
 loaderClockS.load('model/clock/CLOCK_S.glb', function (gltf) {
-    
+
     modelClockS = gltf.scene;
     modelClockS.position.set(0, 0, 0);
     modelClockS.scale.set(1, 1, 1);
@@ -212,6 +211,7 @@ loaderTV.load('model/tv/TV.glb', function (gltf) {
 });
 
 // 模型電視螢幕-關
+let TVclosed = true;
 const loaderTVsc = new GLTFLoader();
 let modelTVsc;
 loaderTVsc.load('model/tv/TV_SC.glb', function (gltf) {
@@ -288,7 +288,6 @@ loaderFanSwitch.load('model/fan/SWITCH_NO_MOO.glb', function (gltf) {
     modelFanSwitch.scale.set(1, 1, 1);
     scene.add(modelFanSwitch);
 
-
 });
 
 // 模型吊扇開關-開
@@ -300,6 +299,29 @@ loaderFanSwitch2.load('model/fan/SWITCH_NO_MOO_P2.glb', function (gltf) {
     modelFanSwitch2.position.set(0, 0, 0);
     modelFanSwitch2.scale.set(1, 1, 1);
 
+});
+
+// 模型書
+const loaderBook = new GLTFLoader();
+let modelBook;
+loaderBook.load('model/other_models/BOOK.glb', function (gltf) {
+
+    modelBook = gltf.scene;
+    modelBook.position.set(0, 0, 0);
+    modelBook.scale.set(1, 1, 1);
+    scene.add(modelBook);
+
+});
+
+// 模型靜止椅
+const loaderChairNA = new GLTFLoader();
+let modelChairNA;
+loaderChairNA.load('model/other_models/NO_MOVE_CHAIR.glb', function (gltf) {
+
+    modelChairNA = gltf.scene;
+    modelChairNA.position.set(0, 0, 0);
+    modelChairNA.scale.set(1, 1, 1);
+    scene.add(modelChairNA);
 
 });
 
@@ -318,6 +340,11 @@ window.onresize = function () {
 window.addEventListener('mousemove', onMouseMove);
 window.addEventListener('click', onClick);
 
+// 說明欄
+const questionArea = window.questionArea;
+const words = window.words;
+const questionIcon = window.questionIcon;
+
 // 鼠標hover-出現手手
 function onMouseMove(event) {
     // 更新鼠標的位置
@@ -325,28 +352,66 @@ function onMouseMove(event) {
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
     // 更新 Raycaster
-    raycaster.setFromCamera(mouse, camera);
+    // raycaster.setFromCamera(mouse, camera);
 
     // 重新計算鼠標懸停的對象
     let intersectsProjectionR = raycaster.intersectObject(modelProjectionR);
     let intersectsChair = raycaster.intersectObject(modelChair);
     let intersectsFanSwitch = raycaster.intersectObject(modelFanSwitch);
-    if (intersectsProjectionR.length > 0 || intersectsChair.length > 0 || intersectsFanSwitch.length > 0) {
+    let intersectsTVsc = raycaster.intersectObject(modelTVsc);
+    let intersectsChairNA = raycaster.intersectObject(modelChairNA);
+
+    if (intersectsTVsc.length > 0) {
+        words.innerHTML = "電視螢幕。";
         document.body.style.cursor = 'pointer';
-        // console.log('click');
+        questionArea.style.display = 'block';
+    } else if (intersectsProjectionR.length > 0) {
+        words.innerHTML = "投影機。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsChair.length > 0) {
+        words.innerHTML = "會動的椅子。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsFanSwitch.length > 0) {
+        words.innerHTML = "電風扇開關。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsChairNA.length > 0) {
+        words.innerHTML = "不會動的椅子。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
     } else {
+        words.innerHTML = "";
         document.body.style.cursor = 'auto';
+        questionArea.style.display = 'none';
     }
+
 }
+
+// 問號的hover出說明
+window.questionIcon.addEventListener('mouseenter', () => {
+    questionIcon.src = 'img/question3.png';
+    words.innerHTML = "說明說明說明說明說明。";
+    questionArea.style.display = 'block';
+});
+
+window.questionIcon.addEventListener('mouseleave', () => {
+    questionIcon.src = 'img/question2.png';
+    words.innerHTML = "";
+    questionArea.style.display = 'none';
+});
 
 
 // 物件被點擊到要做什麼
 function onClick(event) {
-    raycaster.setFromCamera(mouse, camera);
+    // raycaster.setFromCamera(mouse, camera);
 
     let intersectsProjectionR = raycaster.intersectObject(modelProjectionR);
     let intersectsChair = raycaster.intersectObject(modelChair);
     let intersectsFanSwitch = raycaster.intersectObject(modelFanSwitch);
+    let intersectsTVsc = raycaster.intersectObject(modelTVsc);
+    let intersectsTVsc2 = raycaster.intersectObject(modelTVsc2);
 
     // 椅子播放動畫
     if (intersectsChair.length > 0) {
@@ -366,7 +431,6 @@ function onClick(event) {
             }
         }
     }
-
 
     // 投影布幕降下來
     let screenMode = 0;
@@ -416,6 +480,24 @@ function onClick(event) {
         }
     }
 
+    // 創建音訊
+    const audioContext = new (window.AudioContext)();
+    const soundTV = new Audio('sound/tv_sound.mp3');
+    // 電視螢幕切換
+    if (intersectsTVsc.length > 0) {
+        if (TVclosed) {
+            console.log('intersectsTVsc:', intersectsTVsc);
+            soundTV.play();
+            scene.remove(modelTVsc);
+            scene.add(modelTVsc2);
+        } else {
+            console.log('intersectsTVsc2:', intersectsTVsc2);
+            soundTV.play();
+            scene.remove(modelTVsc2);
+            scene.add(modelTVsc);
+        }
+        TVclosed = !TVclosed;
+    }
 }
 
 renderer.domElement.style.touchAction = 'none';
@@ -442,11 +524,11 @@ function animate() {
     if (modelFanBlade && mixerFanBlade) {
         mixerFanBlade.update(delta);
     }
-    
+
     if (modelClockL && mixerClockL) {
         mixerClockL.update(delta);
     }
-    
+
     if (modelClockS && mixerClockS) {
         mixerClockS.update(delta);
     }
