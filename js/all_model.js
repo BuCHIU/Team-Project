@@ -47,8 +47,6 @@ let modelWall;
 loaderWall.load('model/MAP.glb', function (gltf) {
 
     modelWall = gltf.scene;
-    modelWall.position.set(0, 0, 0);
-    modelWall.scale.set(1, 1, 1);
     scene.add(modelWall);
 
 });
@@ -61,8 +59,6 @@ let modelScreen, mixerScreen, clipScreen, actionScreen;
 loaderScreen.load('model/projection/projection_screen.glb', function (gltf) {
 
     modelScreen = gltf.scene;
-    modelScreen.position.set(0, 0, 0);
-    modelScreen.scale.set(1, 1, 1);
     scene.add(modelScreen);
 
     // 找到動畫
@@ -84,8 +80,6 @@ let modelProjectionR;
 loaderProjectionR.load('model/projection/R_projection.glb', function (gltf) {
 
     modelProjectionR = gltf.scene;
-    modelProjectionR.position.set(0, 0, 0);
-    modelProjectionR.scale.set(1, 1, 1);
     scene.add(modelProjectionR);
 
 });
@@ -96,8 +90,6 @@ let modelProjectionL;
 loaderProjectionL.load('model/projection/L_projection.glb', function (gltf) {
 
     modelProjectionL = gltf.scene;
-    modelProjectionL.position.set(0, 0, 0);
-    modelProjectionL.scale.set(1, 1, 1);
     scene.add(modelProjectionL);
 
 });
@@ -108,23 +100,18 @@ let modelCandT;
 loaderCandT.load('model/chair_table_01/CHaIR_and_table.glb', function (gltf) {
 
     modelCandT = gltf.scene;
-    modelCandT.position.set(0, 0, 0);
-    modelCandT.scale.set(1, 1, 1);
     scene.add(modelCandT);
 
 });
 
 // 動畫初始狀態
 let chairLIsAnimating = false;
-let animationPlayed = false;
 // 模型會動椅
 const loaderChair = new GLTFLoader();
 let modelChair, mixerChair, clipChair, actionChair;
 loaderChair.load('model/chair_table_01/CHaIR_ani.glb', function (gltf) {
 
     modelChair = gltf.scene;
-    modelChair.position.set(0, 0, 0);
-    modelChair.scale.set(1, 1, 1);
     scene.add(modelChair);
 
     // 找到動畫
@@ -145,22 +132,17 @@ let modelClock;
 loaderClock.load('model/clock/CLOCK.glb', function (gltf) {
 
     modelClock = gltf.scene;
-    modelClock.position.set(0, 0, 0);
-    modelClock.scale.set(1, 1, 1);
     scene.add(modelClock);
 
 
 });
 
 // 模型時鐘分針
-let ClockLIsAnimating = false;
 const loaderClockL = new GLTFLoader();
 let modelClockL, clipClockL, mixerClockL, actionClockL;
 loaderClockL.load('model/clock/CLOCK_L.glb', function (gltf) {
 
     modelClockL = gltf.scene;
-    modelClockL.position.set(0, 0, 0);
-    modelClockL.scale.set(1, 1, 1);
     scene.add(modelClockL);
 
     // 找到動畫
@@ -169,8 +151,6 @@ loaderClockL.load('model/clock/CLOCK_L.glb', function (gltf) {
         mixerClockL = new THREE.AnimationMixer(modelClockL);
         actionClockL = mixerClockL.clipAction(clipClockL);
         actionClockL.play();
-        // if (ClockLIsAnimating) {
-        // }
     }
 
 });
@@ -181,8 +161,6 @@ let modelClockS, clipClockS, actionClockS, mixerClockS;
 loaderClockS.load('model/clock/CLOCK_S.glb', function (gltf) {
 
     modelClockS = gltf.scene;
-    modelClockS.position.set(0, 0, 0);
-    modelClockS.scale.set(1, 1, 1);
     scene.add(modelClockS);
 
     // 找到動畫
@@ -191,8 +169,6 @@ loaderClockS.load('model/clock/CLOCK_S.glb', function (gltf) {
         mixerClockS = new THREE.AnimationMixer(modelClockS);
         actionClockS = mixerClockS.clipAction(clipClockS);
         actionClockS.play();
-        // if (ClockSIsAnimating) {
-        // }
     }
 
 });
@@ -203,8 +179,6 @@ let modelTV;
 loaderTV.load('model/tv/TV.glb', function (gltf) {
 
     modelTV = gltf.scene;
-    modelTV.position.set(0, 0, 0);
-    modelTV.scale.set(1, 1, 1);
     scene.add(modelTV);
 
 
@@ -217,10 +191,7 @@ let modelTVsc;
 loaderTVsc.load('model/tv/TV_SC.glb', function (gltf) {
 
     modelTVsc = gltf.scene;
-    modelTVsc.position.set(0, 0, 0);
-    modelTVsc.scale.set(1, 1, 1);
     scene.add(modelTVsc);
-
 
 });
 
@@ -230,10 +201,56 @@ let modelTVsc2;
 loaderTVsc2.load('model/tv/TV_SC_2.glb', function (gltf) {
 
     modelTVsc2 = gltf.scene;
-    modelTVsc2.position.set(0, 0, 0);
-    modelTVsc2.scale.set(1, 1, 1);
-    // scene.add(modelTVsc2);
 
+});
+
+// 模型音響
+const loaderSpeaker = new GLTFLoader();
+let modelSpeaker;
+loaderSpeaker.load('model/other_models/SPEAKER.glb', function (gltf) {
+
+    modelSpeaker = gltf.scene;
+    scene.add(modelSpeaker);
+
+});
+
+// 模型窗戶框
+const loaderWindows = new GLTFLoader();
+let modelWindows;
+loaderWindows.load('model/other_models/window.glb', function (gltf) {
+
+    modelWindows = gltf.scene;
+    scene.add(modelWindows);
+
+});
+
+// 模型講桌
+const loaderPodium = new GLTFLoader();
+let modelPodium;
+loaderPodium.load('model/other_models/podium.glb', function (gltf) {
+
+    modelPodium = gltf.scene;
+    scene.add(modelPodium);
+
+});
+
+// 模型冷氣機
+const loaderAC = new GLTFLoader();
+let modelAC;
+loaderAC.load('model/ac/AC.glb', function (gltf) {
+
+    modelAC = gltf.scene;
+    scene.add(modelAC);
+
+});
+
+// 模型冷氣機頁
+const loaderAC2 = new GLTFLoader();
+let modelAC2;
+loaderAC2.load('model/ac/AC_P2.glb', function (gltf) {
+
+    modelAC2 = gltf.scene;
+    scene.add(modelAC2);
 
 });
 
@@ -243,14 +260,10 @@ let modelFan;
 loaderFan.load('model/fan/FAN.glb', function (gltf) {
 
     modelFan = gltf.scene;
-    modelFan.position.set(0, 0, 0);
-    modelFan.scale.set(1, 1, 1);
     scene.add(modelFan);
-
 
 });
 
-const FanBladeLIsAnimating = false;
 // 模型扇葉
 const loaderFanBlade = new GLTFLoader();
 let modelFanBlade, mixerFanBlade, actionsFanBlade;
@@ -275,7 +288,6 @@ loaderFanBlade.load('model/fan/FAN_P222.glb', function (gltf) {
         actionsFanBlade.push(action);
     }
 
-
 });
 
 // 模型吊扇開關-關
@@ -284,8 +296,6 @@ let modelFanSwitch;
 loaderFanSwitch.load('model/fan/SWITCH_NO_MOO.glb', function (gltf) {
 
     modelFanSwitch = gltf.scene;
-    modelFanSwitch.position.set(0, 0, 0);
-    modelFanSwitch.scale.set(1, 1, 1);
     scene.add(modelFanSwitch);
 
 });
@@ -296,8 +306,6 @@ let modelFanSwitch2;
 loaderFanSwitch2.load('model/fan/SWITCH_NO_MOO_P2.glb', function (gltf) {
 
     modelFanSwitch2 = gltf.scene;
-    modelFanSwitch2.position.set(0, 0, 0);
-    modelFanSwitch2.scale.set(1, 1, 1);
 
 });
 
@@ -307,8 +315,6 @@ let modelBook;
 loaderBook.load('model/other_models/BOOK.glb', function (gltf) {
 
     modelBook = gltf.scene;
-    modelBook.position.set(0, 0, 0);
-    modelBook.scale.set(1, 1, 1);
     scene.add(modelBook);
 
 });
@@ -316,11 +322,9 @@ loaderBook.load('model/other_models/BOOK.glb', function (gltf) {
 // 模型靜止椅
 const loaderChairNA = new GLTFLoader();
 let modelChairNA;
-loaderChairNA.load('model/other_models/NO_MOVE_CHAIR.glb', function (gltf) {
+loaderChairNA.load('model/chairs_tables/NO_MOVE_CHAIR.glb', function (gltf) {
 
     modelChairNA = gltf.scene;
-    modelChairNA.position.set(0, 0, 0);
-    modelChairNA.scale.set(1, 1, 1);
     scene.add(modelChairNA);
 
 });
@@ -342,8 +346,8 @@ window.addEventListener('click', onClick);
 
 // 說明欄
 const questionArea = window.questionArea;
-const words = window.words;
-const questionIcon = window.questionIcon;
+const words = document.createElement('p');
+questionArea.appendChild(words);
 
 // 鼠標hover-出現手手
 function onMouseMove(event) {
@@ -363,6 +367,7 @@ function onMouseMove(event) {
 
     if (intersectsTVsc.length > 0) {
         words.innerHTML = "電視螢幕。";
+        // console.log(words);
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsProjectionR.length > 0) {
@@ -388,20 +393,6 @@ function onMouseMove(event) {
     }
 
 }
-
-// 問號的hover出說明
-window.questionIcon.addEventListener('mouseenter', () => {
-    questionIcon.src = 'img/question3.png';
-    words.innerHTML = "說明說明說明說明說明。";
-    questionArea.style.display = 'block';
-});
-
-window.questionIcon.addEventListener('mouseleave', () => {
-    questionIcon.src = 'img/question2.png';
-    words.innerHTML = "";
-    questionArea.style.display = 'none';
-});
-
 
 // 物件被點擊到要做什麼
 function onClick(event) {
@@ -433,25 +424,21 @@ function onClick(event) {
     }
 
     // 投影布幕降下來
-    let screenMode = 0;
+    // let screenMode = 0;
     if (intersectsProjectionR.length > 0) {
         if (mixerScreen) {
-            if (!actionScreen.isRunning() && screenMode === 1) {
-                console.log(2, screenMode);
-                actionScreen.timeScale = -1;
-                actionScreen.play();
-                actionScreen.setLoop(THREE.LoopOnce);
-                actionScreen.clampWhenFinished = true;
-                screenMode = 0;
-                // actionScreen.reset();
-            } else if (!actionScreen.isRunning() && screenMode === 0) {
+            if (!actionScreen.isRunning()) {
                 actionScreen.timeScale = 1;
                 actionScreen.play();
                 actionScreen.setLoop(THREE.LoopOnce);
                 actionScreen.clampWhenFinished = true;
+                // actionScreen.reset();
+            } else {
+                actionScreen.timeScale = -1;
+                actionScreen.play();
+                actionScreen.setLoop(THREE.LoopOnce);
+                actionScreen.clampWhenFinished = true;
                 actionScreen.reset();
-                screenMode = 1;
-                console.log(1, screenMode);
             }
         }
     }

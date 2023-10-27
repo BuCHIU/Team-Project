@@ -46,7 +46,7 @@ body {
     cursor: pointer;
 }
 
-.question-area {
+.qm, .question-area {
     width: calc(90% - 80px);
     height: 30%;
     background-color: rgba(255, 255, 255, 0.7);
@@ -54,7 +54,18 @@ body {
     position: fixed;
     bottom: 20px;
     left: 120px;
+    display: none;
+}
+
+.qm {
     display: block;
+}
+
+.close {
+    width: 40px;
+    margin: 20px;
+    float: right;
+    cursor: pointer;
 }
 
 .showup {
