@@ -44,10 +44,20 @@ controls.update();
 // 模型牆壁
 const loaderWall = new GLTFLoader();
 let modelWall;
-loaderWall.load('model/MAP.glb', function (gltf) {
+loaderWall.load('model/WALL.glb', function (gltf) {
 
     modelWall = gltf.scene;
     scene.add(modelWall);
+
+});
+
+// 模型牆壁
+const loaderFloor = new GLTFLoader();
+let modelFloor;
+loaderFloor.load('model/fLOOR.glb', function (gltf) {
+
+    modelFloor = gltf.scene;
+    scene.add(modelFloor);
 
 });
 
@@ -104,6 +114,16 @@ loaderCandT.load('model/chair_table_01/CHaIR_and_table.glb', function (gltf) {
 
 });
 
+// 模型椅子跟桌子(全)
+const loaderCandTall = new GLTFLoader();
+let modelCandTall;
+loaderCandTall.load('model/chairs_tables/TABLE_AND_CHAIR.glb', function (gltf) {
+
+    modelCandTall = gltf.scene;
+    scene.add(modelCandTall);
+
+});
+
 // 動畫初始狀態
 let chairLIsAnimating = false;
 // 模型會動椅
@@ -126,6 +146,24 @@ loaderChair.load('model/chair_table_01/CHaIR_ani.glb', function (gltf) {
 
 });
 
+// 模型會動椅2
+const loaderChair2 = new GLTFLoader();
+let modelChair2, mixerChair2, clipChair2, actionChair2;
+loaderChair2.load('model/chairs_tables/chair-move.glb', function (gltf) {
+
+    modelChair2 = gltf.scene;
+    scene.add(modelChair2);
+
+    // 找到動畫
+    clipChair2 = THREE.AnimationClip.findByName(gltf.animations, "chair-move1");
+    if (clipChair2) {
+        mixerChair2 = new THREE.AnimationMixer(modelChair2);
+        actionChair2 = mixerChair2.clipAction(clipChair2);
+        actionChair2.play();
+    }
+
+});
+
 // 模型時鐘
 const loaderClock = new GLTFLoader();
 let modelClock;
@@ -133,7 +171,6 @@ loaderClock.load('model/clock/CLOCK.glb', function (gltf) {
 
     modelClock = gltf.scene;
     scene.add(modelClock);
-
 
 });
 
@@ -204,6 +241,20 @@ loaderTVsc2.load('model/tv/TV_SC_2.glb', function (gltf) {
 
 });
 
+
+// 添加音訊
+// 追蹤音訊播放狀態
+let audioPlaying = false;
+const listener = new THREE.AudioListener();
+camera.add(listener);
+const audioLoader = new THREE.AudioLoader();
+const sound = new THREE.PositionalAudio(listener);
+
+audioLoader.load('sound/The Trapezist - Quincas Moreira.mp3', function (buffer) {
+    sound.setBuffer(buffer);
+    sound.setRefDistance(1000); // 设置声音的最远听觉距离
+});
+
 // 模型音響
 const loaderSpeaker = new GLTFLoader();
 let modelSpeaker;
@@ -248,9 +299,19 @@ loaderAC.load('model/ac/AC.glb', function (gltf) {
 const loaderAC2 = new GLTFLoader();
 let modelAC2;
 loaderAC2.load('model/ac/AC_P2.glb', function (gltf) {
-
+    
     modelAC2 = gltf.scene;
     scene.add(modelAC2);
+    
+});
+
+// 模型冷氣遙控器
+const loaderACC = new GLTFLoader();
+let modelACC;
+loaderACC.load('model/ac/AIR-CONTROL.glb', function (gltf) {
+
+    modelACC = gltf.scene;
+    scene.add(modelACC);
 
 });
 
@@ -319,6 +380,26 @@ loaderBook.load('model/other_models/BOOK.glb', function (gltf) {
 
 });
 
+// 模型其他雜物
+const loaderOther = new GLTFLoader();
+let modelOther;
+loaderOther.load('model/other_models/PROP.glb', function (gltf) {
+
+    modelOther = gltf.scene;
+    scene.add(modelOther);
+
+});
+
+// 模型講桌椅
+const loaderPod_chair = new GLTFLoader();
+let modelPod_chair;
+loaderPod_chair.load('model/other_models/podium_chair.glb', function (gltf) {
+
+    modelPod_chair = gltf.scene;
+    scene.add(modelPod_chair);
+
+});
+
 // 模型靜止椅
 const loaderChairNA = new GLTFLoader();
 let modelChairNA;
@@ -326,6 +407,28 @@ loaderChairNA.load('model/chairs_tables/NO_MOVE_CHAIR.glb', function (gltf) {
 
     modelChairNA = gltf.scene;
     scene.add(modelChairNA);
+
+});
+
+// 模型白板
+const loaderWB = new GLTFLoader();
+let modelWB;
+loaderWB.load('model/other_models/white_board.glb', function (gltf) {
+
+    modelWB = gltf.scene;
+    scene.add(modelWB);
+
+});
+
+// 模型帽子
+// 帽子初始狀態：可視
+let hatVisible = true;
+const loaderHat = new GLTFLoader();
+let modelHat;
+loaderHat.load('model/other_models/HAT.glb', function (gltf) {
+
+    modelHat = gltf.scene;
+    scene.add(modelHat);
 
 });
 
@@ -361,13 +464,25 @@ function onMouseMove(event) {
     // 重新計算鼠標懸停的對象
     let intersectsProjectionR = raycaster.intersectObject(modelProjectionR);
     let intersectsChair = raycaster.intersectObject(modelChair);
+    let intersectsChair2 = raycaster.intersectObject(modelChair2);
     let intersectsFanSwitch = raycaster.intersectObject(modelFanSwitch);
     let intersectsTVsc = raycaster.intersectObject(modelTVsc);
     let intersectsChairNA = raycaster.intersectObject(modelChairNA);
+    let intersectsBook = raycaster.intersectObject(modelBook);
+    let intersectsClock = raycaster.intersectObject(modelClock);
+    let intersectsHat = raycaster.intersectObject(modelHat);
+    let intersectsPodium = raycaster.intersectObject(modelPodium);
+    let intersectsSpeaker = raycaster.intersectObject(modelSpeaker);
+    let intersectsScreen = raycaster.intersectObject(modelScreen);
+    let intersectsACC = raycaster.intersectObject(modelACC);
 
-    if (intersectsTVsc.length > 0) {
+    if (intersectsTVsc.length > 0 && TVclosed == true ) {
         words.innerHTML = "電視螢幕。";
         // console.log(words);
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsTVsc.length > 0 && TVclosed == false ) {
+        words.innerHTML = "教室平面圖。";
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsProjectionR.length > 0) {
@@ -375,7 +490,11 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChair.length > 0) {
-        words.innerHTML = "會動的椅子。";
+        words.innerHTML = "被點擊到會動的椅子。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsChair2.length > 0) {
+        words.innerHTML = "有自我意識的椅子。";
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsFanSwitch.length > 0) {
@@ -386,6 +505,34 @@ function onMouseMove(event) {
         words.innerHTML = "不會動的椅子。";
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
+    } else if (intersectsBook.length > 0) {
+        words.innerHTML = "奇怪的書本。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsHat.length > 0) {
+        words.innerHTML = "精靈的帽子。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsClock.length > 0) {
+        words.innerHTML = "時空錯亂的時鐘。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsPodium.length > 0) {
+        words.innerHTML = "講桌。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsSpeaker.length > 0) {
+        words.innerHTML = "音響。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsScreen.length > 0) {
+        words.innerHTML = "投影幕。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsACC.length > 0) {
+        words.innerHTML = "冷氣遙控器。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
     } else {
         words.innerHTML = "";
         document.body.style.cursor = 'auto';
@@ -394,15 +541,41 @@ function onMouseMove(event) {
 
 }
 
+// 影片區
+let screen = document.querySelector('.box');
+let screenPC = document.querySelector('.pc');
+let closeBtn = document.querySelector('.box-close');
+let closeBtnPC = document.querySelector('.pc-close');
+
 // 物件被點擊到要做什麼
 function onClick(event) {
     // raycaster.setFromCamera(mouse, camera);
 
     let intersectsProjectionR = raycaster.intersectObject(modelProjectionR);
+    let intersectsFloor = raycaster.intersectObject(modelFloor);
     let intersectsChair = raycaster.intersectObject(modelChair);
     let intersectsFanSwitch = raycaster.intersectObject(modelFanSwitch);
     let intersectsTVsc = raycaster.intersectObject(modelTVsc);
-    let intersectsTVsc2 = raycaster.intersectObject(modelTVsc2);
+    let intersectsHat = raycaster.intersectObject(modelHat);
+    let intersectsPodium = raycaster.intersectObject(modelPodium);
+    let intersectsSpeaker = raycaster.intersectObject(modelSpeaker);
+    let intersectsScreen = raycaster.intersectObject(modelScreen);
+
+    // 地板變顏色
+    if (intersectsFloor.length > 0) {
+        let colors = [0x8f534f, 0x2f4175, 0x7f5d94, 0xba505c];
+        // let indexColor = 0;
+        let random = colors[Math.floor(Math.random() * 4)];
+
+        let newMaterial = new THREE.MeshStandardMaterial({
+            color: random,
+            emissive: random,
+            roughness: 0.6,
+            metalness: 0.1
+        });
+
+        intersectsFloor[0].object.material = newMaterial;
+    }
 
     // 椅子播放動畫
     if (intersectsChair.length > 0) {
@@ -443,6 +616,8 @@ function onClick(event) {
         }
     }
 
+    // 創建音訊
+    const soundFan = new Audio('sound/tv_sound.mp3');
     // 電風扇運轉
     if (intersectsFanSwitch.length > 0) {
         if (mixerFanBlade) {
@@ -453,10 +628,12 @@ function onClick(event) {
                     scene.add(modelFanSwitch);
                     isAnyFanRunning = true;
                     action.stop();
+                    soundFan.play();
                 } else {
                     scene.remove(modelFanSwitch);
                     scene.add(modelFanSwitch2);
                     action.play();
+                    soundFan.play();
                 }
             });
 
@@ -468,22 +645,58 @@ function onClick(event) {
     }
 
     // 創建音訊
-    const audioContext = new (window.AudioContext)();
     const soundTV = new Audio('sound/tv_sound.mp3');
     // 電視螢幕切換
     if (intersectsTVsc.length > 0) {
         if (TVclosed) {
-            console.log('intersectsTVsc:', intersectsTVsc);
             soundTV.play();
             scene.remove(modelTVsc);
             scene.add(modelTVsc2);
+            console.log(modelTVsc);
+            console.log(modelTVsc2);
         } else {
-            console.log('intersectsTVsc2:', intersectsTVsc2);
             soundTV.play();
             scene.remove(modelTVsc2);
             scene.add(modelTVsc);
         }
         TVclosed = !TVclosed;
+    }
+
+    // 精靈帽子消失出現
+    if (intersectsHat.length > 0) {
+        if (hatVisible) {
+            scene.remove(modelHat);
+        } else {
+            scene.add(modelHat);
+        }
+        hatVisible = !hatVisible;
+    }
+
+    // 音響播放音訊
+    if (intersectsSpeaker.length > 0) {
+        if (audioPlaying) {
+            sound.pause();
+            audioPlaying = false;
+        } else {
+            sound.play();
+            audioPlaying = true;
+        }
+    }
+
+    // 講桌放⋯⋯影片？
+    if (intersectsPodium.length > 0) {
+        screenPC.style.display = 'block';
+        closeBtnPC.addEventListener('click', () => {
+            screenPC.style.display = 'none';
+        })
+    }
+    
+    // 投影幕放⋯⋯影片？
+    if (intersectsScreen.length > 0) {
+        screen.style.display = 'block';
+        closeBtn.addEventListener('click', () => {
+            screen.style.display = 'none';
+        })
     }
 }
 
@@ -506,6 +719,10 @@ function animate() {
 
     if (modelChair && mixerChair) {
         mixerChair.update(delta);
+    }
+
+    if (modelChair2 && mixerChair2) {
+        mixerChair2.update(delta);
     }
 
     if (modelFanBlade && mixerFanBlade) {

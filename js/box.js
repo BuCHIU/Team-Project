@@ -15,7 +15,7 @@ window.questionArea = document.querySelector('.question-area');
 window.qm = document.querySelector('.qm');
 // window.words = document.createElement('p');
 const qmWords = document.createElement('p');
-const closeBtn = document.querySelector('.close');
+window.closeBtn = document.querySelector('.close');
 qmWords.innerHTML = "透過滑鼠左鍵旋轉鏡頭、右鍵平移鏡頭、滾輪縮放鏡頭，探索809教室場景中的物件。";
 qm.appendChild(qmWords);
 setTimeout(() => {
