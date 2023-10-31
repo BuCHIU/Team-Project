@@ -1,35 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="css/home.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/homepage.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
+
 <body>
+
     <div class="container">
-        <div class="logo-area">
-            <img src="img/logo.png" alt="logo" class="logo">
-            <a href="#"></a>
-        </div>
-        <div class="button">
-            <button type="button" class="enterbtn">View 3D</button>
-            <button type="button" class="madebybtn">Made By</button>
-        </div>
-        <div class="membersbox">
-            <div class="words">
-                <p>團隊成員：</p>
-                <p>宇捷 - Leader / UI</p>
-                <p>嘉祐 - 3D Modeling</p>
-                <p>侞㚬 - 3D Modeling</p>
-                <p>漢翔 - Coding</p>
-                <p>宥萱 - Coding</p>
+        <!-- head 包含nav -->
+        <div class="head" data-aos="fade-down" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+            <img src="./img/firstpage.png" alt="一張圖片">
+
+            <div class="logo" data-aos="fade-right" data-aos-duration="1000" data-aos-easing="ease-in-sine"
+            data-aos-delay="800">
+                <img src="./img/logo_new.png" alt="">
             </div>
-            <button type="button" class="closeM">Close</button>
+        </div>
+        <!-- article文章包含了 section1、2 部分內容 -->
+        <div class="article">
+            <div class="house" >
+                <img src="./img/fallguys.png" alt="room">
+            </div>
+
+            <div class="section-1 ">
+
+                <div class="card-L" data-aos="fade-left" data-aos-delay="0">
+                    <div class="picture">
+                        <img src="./img/sticker/yujie.jpg" alt="">
+                    </div>
+
+                    <div class="introduce">
+                        <div class="title">
+                            <h3>張宇婕 UI/UX設計</h3>
+                        </div>
+                        <div class="text">
+                            <p>我是一個人我是一個人我是一個人我是一個人我是一個我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人</p>
+                            <div class="qrcode-intext">
+                                <img src="./img/qr.png" alt="">
+                            </div>
+                        </div>
+                        <div class="qrcode">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more">
+                            <a href="#">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-R" data-aos="fade-right" data-aos-delay="0">
+                    <div class="picture-R">
+                        <img src="./img/sticker/han.jpg" alt="">
+                    </div>
+
+                    <div class="introduce-R">
+                        <div class="title-R">
+                            <h3>李漢翔 程式設計</h3>
+                        </div>
+                        <div class="qrcode-R">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more-R">
+                            <a href="#">了解更多</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="section-2 ">
+                <div class="card-L" data-aos="fade-left"  data-aos-delay="200">
+                    <div class="picture">
+                        <img src="./img/sticker/yuxuan.jpg" alt="">
+                    </div>
+
+                    <div class="introduce">
+                        <div class="title">
+                            <h3>李宥萱 程式設計</h3>
+                        </div>
+                        <div class="text">
+                            <p>我是一個人我是一個人我是一個人我是一個人我是一個我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人</p>
+                            <div class="qrcode-intext">
+                                <img src="./img/qr.png" alt="">
+                            </div>
+                        </div>
+                        <div class="qrcode">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more">
+                            <a href="#">了解更多</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-R" data-aos="fade-right" data-aos-delay="200">
+                    <div class="picture-R">
+                        <img src="./img/sticker/jiayu.jpg" alt="">
+                    </div>
+
+                    <div class="introduce-R">
+                        <div class="title-R">
+                            <h3>陳嘉祐 3D建模</h3>
+                        </div>
+                        <div class="qrcode-R">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more-R">
+                            <a href="#">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-3 ">
+                <div class="card-L" data-aos="fade-left" data-aos-delay="400" >
+                    <div class="picture">
+                        <img src="./img/sticker/rujun.jpg" alt="">
+                    </div>
+
+                    <div class="introduce">
+                        <div class="title">
+                            <h3>謝侞㚬 3D建模</h3>
+                        </div>
+                        <div class="text">
+                            <p>我是李漢翔我是一個我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人</p>
+                            <div class="qrcode-intext">
+                                <img src="./img/qr.png" alt="">
+                            </div>
+                        </div>
+                        <div class="qrcode">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more">
+                            <a href="#">了解更多</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="card-R" data-aos="fade-right" data-aos-delay="400">
+                    <div class="picture-R">
+                        <img src="./img/sticker/cube.png" alt="">
+                    </div>
+
+                    <div class="introduce-R">
+                        <div class="title-R">
+                            <h3>夥伴們集合囉</h3>
+                        </div>
+                        <div class="qrcode-R">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more-R">
+                            <a href="#">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-4 ">
+
+                <div class="card-L" data-aos="fade-left"  data-aos-delay="600">
+                    <div class="picture">
+                        <img src="./img/sticker/jiayu.jpg" alt="">
+                    </div>
+
+                    <div class="introduce">
+                        <div class="title">
+                            <h3>陳嘉祐 3D建模</h3>
+                        </div>
+                        <div class="text">
+                            <p>我是一個人我是一個人我是一個人我是一個人我是一個我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人</p>
+                            <div class="qrcode-intext">
+                                <img src="./img/qr.png" alt="">
+                            </div>
+                        </div>
+                        <div class="qrcode">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more">
+                            <a href="#">了解更多</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-R">
+                    <div class="picture-R" data-aos="fade-right" data-aos-delay="600">
+                        <img src="./img/qr.png" alt="">
+                    </div>
+
+                    <div class="introduce-R">
+                        <div class="title-R">
+                            <h3>夥伴們集合囉</h3>
+                        </div>
+                        <div class="qrcode-R">
+                            <img src="./img/sticker/A.png" alt="">
+                        </div>
+                        <div class="more-R">
+                            <a href="#">了解更多</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="section-5 ">
+
+                <div class="card-L" data-aos="fade-left" data-aos-delay="800" >
+                    <div class="picture">
+                        <img src="./img/sticker/han.jpg" alt="">
+                    </div>
+
+                    <div class="introduce">
+                        <div class="title">
+                            <h3>李漢翔 程式設計</h3>
+                        </div>
+                        <div class="text">
+                            <p>我是一個人我是一個人我是一個人我是一個人我是一個我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人我是一個人</p>
+                            <div class="qrcode-intext">
+                                <img src="./img/qr.png" alt="">
+                            </div>
+                        </div>
+                        <div class="qrcode">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more">
+                            <a href="#">了解更多</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-R" data-aos="fade-right" data-aos-delay="800"  >
+                    <div class="picture-R">
+                        <img src="./img/qr.png" alt="">
+                    </div>
+
+                    <div class="introduce-R">
+                        <div class="title-R">
+                            <h3>宇婕 UI/UX設計</h3>
+                        </div>
+                        <div class="qrcode-R">
+                            <img src="./img/qr.png" alt="">
+                        </div>
+                        <div class="more-R">
+                            <a href="#">了解更多</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <div class="footer"  data-aos="fade-up" data-aos-duration="900" data-aos-easing="ease-in-sine">
+            <div class="playBtn">
+                <img src="./img/btn/btn-1_0.png" alt="">
+            </div>
+            <div class="BottomHouse">
+                <img src="./img/bottom.png" alt="">
+            </div>
         </div>
     </div>
-    
-    <script src="js/home.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 初始化狀態是確保程式正確運行的重要步驟
+        AOS.init();
+    </script>
+
+    <script>
+        let Btn1 = document.querySelector('.playBtn img');
+
+        Btn1.addEventListener("mouseover", function () {
+            Btn1.src = './img/btn/btn-2_0.png';
+
+            // console.log(Btn1.src,'123');
+        });
+
+        Btn1.addEventListener("mouseout", function () {
+            Btn1.src = './img/btn/btn-1_0.png';
+            // console.log(Btn1.src,'456');
+        });
+    </script>
 
 </body>
+
 </html>
