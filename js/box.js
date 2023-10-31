@@ -55,5 +55,21 @@ questionIcon.addEventListener('mouseleave', () => {
     questionIcon.src = 'img/question2.png';
 });
 
+// 投影幕打字
+window.proscreen = document.querySelector('.box');
+window.closebtn = document.querySelector('.box-close');
+// const screenwords = document.createElement('div');
+// screenwords.classList.add("screen-words-2");
+// const screencontent = '位於中興大學綜合大樓8樓，為現代化的教學空間，互動白板及高畫質投影設備和音響系統，使教學過程更具效率和互動性。座位可因應不同教學課程調整，促進師生間相互交流與合作討論。';
 
+// const ele = '<span>' + screencontent.split('').join('</span><span>') + '</span>';
+
+// $(ele).hide().appendTo(screenwords).each(function (i) {
+//     $(this).delay(100 * i).css({
+//         display: 'inline',
+//         opacity: 0
+//     }).animate({
+//         opacity: 1
+//     }, 100);
+// });
 

@@ -61,6 +61,16 @@ loaderFloor.load('model/fLOOR.glb', function (gltf) {
 
 });
 
+// 模型人
+const loaderFall = new GLTFLoader();
+let modelFall;
+loaderFall.load('model/other_models/FALL.glb', function (gltf) {
+
+    modelFall = gltf.scene;
+    scene.add(modelFall);
+
+});
+
 // 動畫初始狀態
 let screenIsAnimating = false;
 // 模型投影幕
@@ -518,20 +528,20 @@ function onMouseMove(event) {
     let intersects = raycaster.intersectObject(modelOther.children[5]);
 
     if (intersectsTVsc.length > 0 && TVclosed == true) {
-        words.innerHTML = "電視螢幕。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">電視螢幕。`;
         // console.log(words);
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsTVsc.length > 0 && TVclosed == false) {
-        words.innerHTML = "教室平面圖。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">教室平面圖。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsProjectionR.length > 0) {
-        words.innerHTML = "投影機。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">投影機。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChair.length > 0) {
-        words.innerHTML = "被點擊到會動的椅子。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">會動的椅子。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChair2.length > 0) {
@@ -539,7 +549,7 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsFanSwitch.length > 0) {
-        words.innerHTML = "電風扇開關。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">電風扇開關。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChairNA.length > 0) {
@@ -551,7 +561,7 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHat.length > 0) {
-        words.innerHTML = "精靈的帽子。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">精靈的帽子。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsClock.length > 0) {
@@ -559,23 +569,23 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsPodium.length > 0) {
-        words.innerHTML = "講桌。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">講桌。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsSpeaker.length > 0) {
-        words.innerHTML = "音響。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">音響。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsScreen.length > 0) {
-        words.innerHTML = "投影幕。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">投影幕。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsACC.length > 0) {
-        words.innerHTML = "冷氣遙控器。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">冷氣遙控器。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsWBM.length > 0) {
-        words.innerHTML = "點擊到會動的白板。";
+        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">會動的白板。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHAT.length > 0) {
@@ -608,12 +618,14 @@ function onMouseMove(event) {
 
 }
 
-// 影片區
-let screen = document.querySelector('.box');
-let closeBtn = document.querySelector('.box-close');
+// 影像區
+const proScreen = window.proscreen;
+const closeBtn = window.closebtn;
 let screenPC = document.querySelector('.pc');
 let closeBtnPC = document.querySelector('.pc-close');
 
+let chairplay = true;
+let screenplay = true;
 // 物件被點擊到要做什麼
 function onClick(event) {
     // raycaster.setFromCamera(mouse, camera);
@@ -643,24 +655,27 @@ function onClick(event) {
             metalness: 0.1
         });
 
+        // intersectsFloor.forEach(object => {
+        //     console.log(object);
+        //     object.object.material = newMaterial;
+        // })
         intersectsFloor[0].object.material = newMaterial;
     }
 
     // 椅子播放動畫
     if (intersectsChair.length > 0) {
         if (mixerChair) {
-            if (!actionChair.isRunning()) {
+            if (chairplay) {
                 actionChair.timeScale = 1;
                 actionChair.play();
                 actionChair.setLoop(THREE.LoopOnce);
                 actionChair.clampWhenFinished = true;
                 actionChair.reset();
+                chairplay = false;
             } else {
                 actionChair.timeScale = -1;
-                actionChair.play();
-                actionChair.setLoop(THREE.LoopOnce);
-                actionChair.clampWhenFinished = true;
-                // actionChair.stop();
+                actionChair.paused = false;
+                chairplay = true;
             }
         }
     }
@@ -669,18 +684,17 @@ function onClick(event) {
     // let screenMode = 0;
     if (intersectsProjectionR.length > 0) {
         if (mixerScreen) {
-            if (!actionScreen.isRunning()) {
+            if (screenplay) {
                 actionScreen.timeScale = 1;
                 actionScreen.play();
                 actionScreen.setLoop(THREE.LoopOnce);
                 actionScreen.clampWhenFinished = true;
-                // actionScreen.reset();
+                actionScreen.reset();
+                screenplay = false;
             } else {
                 actionScreen.timeScale = -1;
-                actionScreen.play();
-                actionScreen.setLoop(THREE.LoopOnce);
-                actionScreen.clampWhenFinished = true;
-                actionScreen.reset();
+                actionScreen.paused = false;
+                screenplay = true;
             }
         }
     }
@@ -771,9 +785,9 @@ function onClick(event) {
 
     // 投影幕放⋯⋯教室介紹
     if (intersectsScreen.length > 0) {
-        screen.style.display = 'block';
+        proScreen.style.display = 'block';
         closeBtn.addEventListener('click', () => {
-            screen.style.display = 'none';
+            proScreen.style.display = 'none';
         })
     }
 
