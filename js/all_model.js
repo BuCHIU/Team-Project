@@ -94,6 +94,16 @@ loaderProjectionR.load('model/projection/R_projection.glb', function (gltf) {
 
 });
 
+// 模型投影機槓槓
+const loaderProj = new GLTFLoader();
+let modelProj;
+loaderProj.load('model/projection/PROOO.glb', function (gltf) {
+
+    modelProj = gltf.scene;
+    scene.add(modelProj);
+
+});
+
 // 模型投影機左
 const loaderProjectionL = new GLTFLoader();
 let modelProjectionL;
@@ -252,7 +262,7 @@ const sound = new THREE.PositionalAudio(listener);
 
 audioLoader.load('sound/The Trapezist - Quincas Moreira.mp3', function (buffer) {
     sound.setBuffer(buffer);
-    sound.setRefDistance(1000); // 设置声音的最远听觉距离
+    sound.setRefDistance(1000); // 設置聲音最遠可聽距離
 });
 
 // 模型音響
@@ -295,14 +305,41 @@ loaderAC.load('model/ac/AC.glb', function (gltf) {
 
 });
 
-// 模型冷氣機頁
+// 模型冷氣葉片
 const loaderAC2 = new GLTFLoader();
-let modelAC2;
-loaderAC2.load('model/ac/AC_P2.glb', function (gltf) {
-    
+let modelAC2, actionsAC2, mixerAC2;
+let clipsAC2 = [];
+loaderAC2.load('model/ac/ac_P22.glb', function (gltf) {
+
     modelAC2 = gltf.scene;
     scene.add(modelAC2);
-    
+
+    // 找到動畫
+    clipsAC2 = gltf.animations;
+    mixerAC2 = new THREE.AnimationMixer(modelAC2);
+    actionsAC2 = [];
+
+    // 創建並播放每個 AnimationClip
+    for (let i = 0; i < clipsAC2.length; i++) {
+        const actionAC2 = mixerAC2.clipAction(clipsAC2[i]);
+        actionAC2.stop();
+        actionsAC2.push(actionAC2);
+    }
+});
+
+// 模型會動白板
+const loaderWBM = new GLTFLoader();
+let modelWBM, clipWBM, actionWBM, mixerWBM;
+loaderWBM.load('model/other_models/board-move.glb', function (gltf) {
+    modelWBM = gltf.scene;
+    scene.add(modelWBM);
+
+    // 找到動畫
+    clipWBM = THREE.AnimationClip.findByName(gltf.animations, "white-board-move");
+    if (clipWBM) {
+        mixerWBM = new THREE.AnimationMixer(modelWBM);
+        actionWBM = mixerWBM.clipAction(clipWBM);
+    }
 });
 
 // 模型冷氣遙控器
@@ -332,8 +369,6 @@ let clipsFanBlade = [];
 loaderFanBlade.load('model/fan/FAN_P222.glb', function (gltf) {
 
     modelFanBlade = gltf.scene;
-    modelFanBlade.position.set(0, 0, 0);
-    modelFanBlade.scale.set(1, 1, 1);
     scene.add(modelFanBlade);
 
     // 找到動畫
@@ -475,13 +510,19 @@ function onMouseMove(event) {
     let intersectsSpeaker = raycaster.intersectObject(modelSpeaker);
     let intersectsScreen = raycaster.intersectObject(modelScreen);
     let intersectsACC = raycaster.intersectObject(modelACC);
+    let intersectsWBM = raycaster.intersectObject(modelWBM);
+    let intersectsHAT = raycaster.intersectObject(modelOther.children[0]);
+    let intersectsRedTea = raycaster.intersectObject(modelOther.children[1]);
+    let intersectsChicken = raycaster.intersectObject(modelOther.children[2]);
+    let intersectsNameBoard = raycaster.intersectObject(modelOther.children[4]);
+    let intersects = raycaster.intersectObject(modelOther.children[5]);
 
-    if (intersectsTVsc.length > 0 && TVclosed == true ) {
+    if (intersectsTVsc.length > 0 && TVclosed == true) {
         words.innerHTML = "電視螢幕。";
         // console.log(words);
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
-    } else if (intersectsTVsc.length > 0 && TVclosed == false ) {
+    } else if (intersectsTVsc.length > 0 && TVclosed == false) {
         words.innerHTML = "教室平面圖。";
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
@@ -533,6 +574,32 @@ function onMouseMove(event) {
         words.innerHTML = "冷氣遙控器。";
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
+    } else if (intersectsWBM.length > 0) {
+        words.innerHTML = "點擊到會動的白板。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsHAT.length > 0) {
+        words.innerHTML = "巫師帽！";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsRedTea.length > 0) {
+        words.innerHTML = "其實有加珍珠的紅茶。";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsChicken.length > 0) {
+        words.innerHTML = "超派～";
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsNameBoard.length > 0) {
+        words.innerHTML = `簽到簽退板。
+        （於勞動部－產業新尖兵訓練，參訓期間相當重要的道具。）`;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersects.length > 0) {
+        words.innerHTML = `同學的 MacBook Air。
+        `;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
     } else {
         words.innerHTML = "";
         document.body.style.cursor = 'auto';
@@ -543,8 +610,8 @@ function onMouseMove(event) {
 
 // 影片區
 let screen = document.querySelector('.box');
-let screenPC = document.querySelector('.pc');
 let closeBtn = document.querySelector('.box-close');
+let screenPC = document.querySelector('.pc');
 let closeBtnPC = document.querySelector('.pc-close');
 
 // 物件被點擊到要做什麼
@@ -560,6 +627,8 @@ function onClick(event) {
     let intersectsPodium = raycaster.intersectObject(modelPodium);
     let intersectsSpeaker = raycaster.intersectObject(modelSpeaker);
     let intersectsScreen = raycaster.intersectObject(modelScreen);
+    let intersectsACC = raycaster.intersectObject(modelACC);
+    let intersectsWBM = raycaster.intersectObject(modelWBM);
 
     // 地板變顏色
     if (intersectsFloor.length > 0) {
@@ -652,8 +721,6 @@ function onClick(event) {
             soundTV.play();
             scene.remove(modelTVsc);
             scene.add(modelTVsc2);
-            console.log(modelTVsc);
-            console.log(modelTVsc2);
         } else {
             soundTV.play();
             scene.remove(modelTVsc2);
@@ -683,20 +750,62 @@ function onClick(event) {
         }
     }
 
-    // 講桌放⋯⋯影片？
+    // 講桌放⋯⋯輪播照片
     if (intersectsPodium.length > 0) {
         screenPC.style.display = 'block';
+        // 講桌桌面-點擊logo
+        const pcLogo = document.querySelector('.pc-logo');
+        const pcSlide = document.querySelector('#carouselExampleIndicators');
+        const pcSlideClose = document.querySelector('.close-slide');
+        pcLogo.addEventListener('click', () => {
+            pcSlide.classList.remove("disappear");
+            pcSlideClose.addEventListener('click', () => {
+                pcSlide.classList.add("disappear");
+            })
+        })
+
         closeBtnPC.addEventListener('click', () => {
             screenPC.style.display = 'none';
         })
     }
-    
-    // 投影幕放⋯⋯影片？
+
+    // 投影幕放⋯⋯教室介紹
     if (intersectsScreen.length > 0) {
         screen.style.display = 'block';
         closeBtn.addEventListener('click', () => {
             screen.style.display = 'none';
         })
+    }
+
+    // 創建音訊
+    const soundAC = new Audio('sound/turn_on_the_ac.mp3');
+    // 按冷氣遙控開啟冷氣
+    if (intersectsACC.length > 0) {
+        if (mixerAC2) {
+            let isAnyACRunning = false;
+            actionsAC2.forEach(action => {
+                if (action.isRunning()) {
+                    isAnyACRunning = true;
+                    action.stop();
+                    soundAC.play();
+                } else {
+                    action.play();
+                    soundAC.play();
+                }
+            });
+        }
+    }
+
+    // 白板會動
+    if (intersectsWBM.length > 0) {
+        // 檢查動畫狀態
+        if (mixerWBM) {
+            if (actionWBM.isRunning()) {
+                actionWBM.stop();
+            } else {
+                actionWBM.play();
+            }
+        }
     }
 }
 
@@ -735,6 +844,14 @@ function animate() {
 
     if (modelClockS && mixerClockS) {
         mixerClockS.update(delta);
+    }
+
+    if (modelAC2 && mixerAC2) {
+        mixerAC2.update(delta);
+    }
+
+    if (modelWBM && mixerWBM) {
+        mixerWBM.update(delta);
     }
 
     controls.update();

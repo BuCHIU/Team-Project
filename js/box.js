@@ -13,20 +13,37 @@ exitBtn.addEventListener('click', () => {
 window.questionIcon = document.querySelector('.question');
 window.questionArea = document.querySelector('.question-area');
 window.qm = document.querySelector('.qm');
-// window.words = document.createElement('p');
-const qmWords = document.createElement('p');
+const qmWords = document.createElement('div');
 window.closeBtn = document.querySelector('.close');
-qmWords.innerHTML = "透過滑鼠左鍵旋轉鏡頭、右鍵平移鏡頭、滾輪縮放鏡頭，探索809教室場景中的物件。";
+qmWords.classList.add("words");
+qmWords.innerHTML = `<img src="img/mouse_left.png" alt="左鍵" class="mouse">
+左鍵<br>
+旋轉鏡頭
+<img src="img/mouse_middle.png" alt="滾輪" class="mouse">
+滾輪<br>
+縮放鏡頭
+<img src="img/mouse_right.png" alt="右鍵" class="mouse">
+右鍵<br>
+平移鏡頭`;
 qm.appendChild(qmWords);
+// qm.appendChild(qmIcon);
 setTimeout(() => {
     qm.style.display = 'none';
 }, 5000);
 
 // 問號出說明
 questionIcon.addEventListener('click', () => {
-    // console.dir(questionIcon);
-    questionIcon.src = 'img/question3.png';
-    qmWords.innerHTML = "透過滑鼠左鍵旋轉鏡頭、右鍵平移鏡頭、滾輪縮放鏡頭，探索809教室場景中的物件。";
+    qmWords.classList.add("words");
+    qmWords.innerHTML = `<img src="img/mouse_left.png" alt="左鍵" class="mouse">
+    左鍵<br>
+    旋轉鏡頭
+    <img src="img/mouse_middle.png" alt="滾輪" class="mouse">
+    滾輪<br>
+    縮放鏡頭
+    <img src="img/mouse_right.png" alt="右鍵" class="mouse">
+    右鍵<br>
+    平移鏡頭
+    `;
     qm.style.display = 'block';
 });
 closeBtn.addEventListener('click', () => {
@@ -37,3 +54,6 @@ closeBtn.addEventListener('click', () => {
 questionIcon.addEventListener('mouseleave', () => {
     questionIcon.src = 'img/question2.png';
 });
+
+
+

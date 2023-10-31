@@ -49,7 +49,7 @@ body {
 .qm, .question-area {
     width: calc(90% - 80px);
     height: 30%;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 5px;
     position: fixed;
     bottom: 20px;
@@ -98,4 +98,68 @@ p {
     background-image: url(../img/001-8.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: url("../img/cursor-1.ico"), auto;
+    position: absolute;
+}
+
+.pc-logo {
+    width: 120px;
+    position: relative;
+    left: 20%;
+    top: 15%;
+    cursor: url("../img/pointer.ico"), auto;
+}
+
+.pc-close {
+    cursor: url("../img/pointer.ico"), auto;
+}
+
+.carousel {
+    position: relative;
+    /* top: -10%; */
+    bottom: 5%;
+    left: calc(20% / 2);
+    width: 80%;
+}
+
+.top-border {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(52, 130, 130);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.close-slide {
+    width: 25px;
+    margin: 10px;
+    cursor: url("../img/pointer.ico"), auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon,
+button {
+    cursor: url("../img/pointer.ico"), auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    top: 100px !important;
+    cursor: url("../img/pointer.ico"), auto;
+}
+
+.words {
+    font-size: 20px;
+    /* text-align: center; */
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mouse {
+    /* width: 80px; */
+    height: 100px;
+    margin: 20px 20px 20px 100px;
 }
