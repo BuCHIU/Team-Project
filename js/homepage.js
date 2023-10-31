@@ -10,3 +10,7 @@ Btn1.addEventListener("mouseout", function () {
     Btn1.src = './img/btn/btn-1_0.png';
     // console.log(Btn1.src,'456');
 });
+
+Btn1.addEventListener('click', () => {
+    window.location.href = "loading.html";
+})
