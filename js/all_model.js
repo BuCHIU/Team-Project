@@ -28,8 +28,9 @@ scene.background = new THREE.Color("rgb(172, 207, 207)");
 // scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
 // 燈光
-light = new THREE.HemisphereLight(0xfcfcfa, 0x302c24, 8);
-// soft white light 0x080820 0xffffbb
+light = new THREE.HemisphereLight(0xfcfcfa, 0x3f3f4a, 7);
+// light = new THREE.AmbientLight( 0x404040, 50 ); 
+// 0x080820 0xffffbb
 scene.add(light);
 
 // 攝影機
