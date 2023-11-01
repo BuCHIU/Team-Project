@@ -73,6 +73,12 @@
     left: 343px;
 }
 
+@media (max-width:1920px) {
+    .logo {
+        left: 230px;
+    }
+}
+
 @media (max-width:1200px) {
     .logo {
         left: 167px;
@@ -163,8 +169,33 @@
 
 @media (max-width:1745px) {
     .house img {
-        top: -330px;
-        left: -60px;
+        top: -100px;
+        left: -43px;
+        height: 702px;
+        /* display: none; */
+    }
+}
+
+@media (max-width:1650px) {
+    .house img {
+        left: -70px;
+        /* display: none; */
+    }
+}
+
+@media (max-width:1600px) {
+    .house img {
+        top: -100px;
+        left: -89px;
+        height: 702px;
+        /* display: none; */
+    }
+}
+
+@media (max-width:1440px) {
+    .house img {
+        top: -71px;
+        left: -140px;
         height: 702px;
         /* display: none; */
     }
@@ -199,6 +230,12 @@
         left: -362px;
         top: -49px;
         height: 702px;
+    }
+}
+
+@media (max-width:768px) {
+    .house img {
+        left: -380px;
     }
 }
 
@@ -258,7 +295,7 @@
 @media (max-width:1745px) {
     .section-1 {
         justify-content: center;
-        padding-top: 295px;
+        padding-top: 543px;
         /* height: 52.5dvh; */
     }
 
@@ -266,6 +303,14 @@
         display: none;
     }
 }
+
+@media (max-width:1440px) {
+    .section-1 {
+        padding-top: 630px;
+        /* height: 21.5dvh; */
+    }
+}
+
 
 @media (max-width:1280px) {
     .section-1 {
