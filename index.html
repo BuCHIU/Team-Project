@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>中興綜大-809教室</title>
+    <title>算你倒楣</title>
     <link rel="stylesheet" href="./css/homepage.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -259,8 +259,6 @@
             </div>
         </div>
 
-
-
         <div class="footer"  data-aos="fade-up" data-aos-duration="900" data-aos-easing="ease-in-sine">
             <div class="playBtn">
                 <img src="./img/btn/btn-1_0.png" alt="">
@@ -275,7 +273,21 @@
         // 初始化狀態是確保程式正確運行的重要步驟
         AOS.init();
     </script>
-    <script src="js/homepage.js"></script>
+
+    <script>
+        let Btn1 = document.querySelector('.playBtn img');
+
+        Btn1.addEventListener("mouseover", function () {
+            Btn1.src = './img/btn/btn-2_0.png';
+
+            // console.log(Btn1.src,'123');
+        });
+
+        Btn1.addEventListener("mouseout", function () {
+            Btn1.src = './img/btn/btn-1_0.png';
+            // console.log(Btn1.src,'456');
+        });
+    </script>
 
 </body>
 
