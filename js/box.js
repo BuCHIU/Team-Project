@@ -16,13 +16,13 @@ window.qm = document.querySelector('.qm');
 const qmWords = document.createElement('div');
 window.closeBtn = document.querySelector('.close');
 qmWords.classList.add("words");
-qmWords.innerHTML = `<img src="img/mouse_left.png" alt="左鍵" class="mouse">
+qmWords.innerHTML = `<img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
 左鍵<br>
 旋轉鏡頭
-<img src="img/mouse_middle.png" alt="滾輪" class="mouse">
+<img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
 滾輪<br>
 縮放鏡頭
-<img src="img/mouse_right.png" alt="右鍵" class="mouse">
+<img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
 右鍵<br>
 平移鏡頭`;
 qm.appendChild(qmWords);
@@ -33,14 +33,15 @@ setTimeout(() => {
 
 // 問號出說明
 questionIcon.addEventListener('click', () => {
+    questionIcon.src = './img/main_icon/question2.png';
     qmWords.classList.add("words");
-    qmWords.innerHTML = `<img src="img/mouse_left.png" alt="左鍵" class="mouse">
+    qmWords.innerHTML = `<img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
     左鍵<br>
     旋轉鏡頭
-    <img src="img/mouse_middle.png" alt="滾輪" class="mouse">
+    <img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
     滾輪<br>
     縮放鏡頭
-    <img src="img/mouse_right.png" alt="右鍵" class="mouse">
+    <img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
     右鍵<br>
     平移鏡頭
     `;
@@ -52,11 +53,11 @@ closeBtn.addEventListener('click', () => {
 })
 
 questionIcon.addEventListener('mouseleave', () => {
-    questionIcon.src = 'img/question2.png';
+    questionIcon.src = './img/main_icon/question3.png';
 });
 
 // 投影幕打字
-window.proscreen = document.querySelector('.box');
+const proscreen = document.querySelector('.box');
 window.closebtn = document.querySelector('.box-close');
 // const screenwords = document.createElement('div');
 // screenwords.classList.add("screen-words-2");

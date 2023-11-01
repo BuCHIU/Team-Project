@@ -6,6 +6,7 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 let mixer;
+let light;
 
 // 射線及鼠標
 const raycaster = new THREE.Raycaster();
@@ -19,12 +20,17 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
-const pmremGenerator = new THREE.PMREMGenerator(renderer);
+// const pmremGenerator = new THREE.PMREMGenerator(renderer);
 
 // 場景
 const scene = new THREE.Scene();
 scene.background = new THREE.Color("rgb(172, 207, 207)");
-scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+// scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+
+// 燈光
+light = new THREE.HemisphereLight(0xfcfcfa, 0x302c24, 8);
+// soft white light 0x080820 0xffffbb
+scene.add(light);
 
 // 攝影機
 const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 3000);
