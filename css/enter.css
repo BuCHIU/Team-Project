@@ -61,6 +61,12 @@ body {
     display: block;
 }
 
+@media (max-width: 1080px) {
+    .qm, .question-area {
+        width: ;
+    }
+}
+
 .close {
     width: 40px;
     margin: 20px;

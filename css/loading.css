@@ -46,7 +46,7 @@
     /* background: linear-gradient(0deg, rgb(123, 187, 187), white); */
     background-color: white;
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-    animation: line 2s linear 0s 1 backwards;
+    animation: line 6s linear 0s 1 backwards;
 }
 
 @keyframes line {
@@ -76,7 +76,7 @@
     position: absolute;
     color: #e36941;
     overflow: hidden;
-    animation: animloader 1s linear infinite;
+    animation: animloader 6s linear infinite;
 }
 
 @keyframes animloader {
