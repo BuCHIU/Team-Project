@@ -534,20 +534,20 @@ function onMouseMove(event) {
     let intersects = raycaster.intersectObject(modelOther.children[5]);
 
     if (intersectsTVsc.length > 0 && TVclosed == true) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">電視螢幕。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電視螢幕。`;
         // console.log(words);
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsTVsc.length > 0 && TVclosed == false) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">教室平面圖。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">教室平面圖。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsProjectionR.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">投影機。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">投影機。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChair.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">會動的椅子。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">會動的椅子。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChair2.length > 0) {
@@ -555,7 +555,7 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsFanSwitch.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">電風扇開關。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電風扇開關。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChairNA.length > 0) {
@@ -567,7 +567,7 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHat.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">精靈的帽子。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">精靈的帽子。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsClock.length > 0) {
@@ -575,23 +575,23 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsPodium.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">講桌。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">講桌。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsSpeaker.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">音響。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">音響。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsScreen.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">投影幕。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">投影幕。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsACC.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">冷氣遙控器。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">冷氣遙控器。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsWBM.length > 0) {
-        words.innerHTML = `<img src="img/cursor_3.png" alt="可點擊" class="clickable-icon">會動的白板。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">會動的白板。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHAT.length > 0) {

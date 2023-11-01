@@ -57,7 +57,7 @@ questionIcon.addEventListener('mouseleave', () => {
 });
 
 // 投影幕打字
-const proscreen = document.querySelector('.box');
+window.proscreen = document.querySelector('.box');
 window.closebtn = document.querySelector('.box-close');
 // const screenwords = document.createElement('div');
 // screenwords.classList.add("screen-words-2");

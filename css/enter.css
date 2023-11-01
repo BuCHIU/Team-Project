@@ -146,10 +146,10 @@ p {
 }
 
 .pc {
-    background-image: url(../img/001-8.jpg);
+    background-image: url(../img/podium_pc/pc_wallpaper.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    cursor: url("../img/cursor-1.ico"), auto;
+    cursor: url("../img/podium_pc/cursor-1.ico"), auto;
     border: 5px solid rgb(52, 130, 130);
 }
 
@@ -158,11 +158,11 @@ p {
     position: relative;
     left: 20%;
     top: 15%;
-    cursor: url("../img/pointer.ico"), auto;
+    cursor: url("../img/podium_pc/pointer.ico"), auto;
 }
 
 .pc-close {
-    cursor: url("../img/pointer.ico"), auto;
+    cursor: url("../img/podium_pc/pointer.ico"), auto;
     z-index: 12;
 }
 
@@ -191,19 +191,19 @@ p {
 .close-slide {
     width: 25px;
     margin: 10px;
-    cursor: url("../img/pointer.ico"), auto;
+    cursor: url("../img/podium_pc/pointer.ico"), auto;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon,
 button {
-    cursor: url("../img/pointer.ico"), auto;
+    cursor: url("../img/podium_pc/pointer.ico"), auto;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
     top: 100px !important;
-    cursor: url("../img/pointer.ico"), auto;
+    cursor: url("../img/podium_pc/pointer.ico"), auto;
 }
 
 .words {
