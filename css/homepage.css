@@ -201,6 +201,14 @@
     }
 }
 
+@media (max-width:1366px) {
+    .house img {
+        top: -91px;
+        left: -219px;
+        height: 754px;
+    }
+}
+
 @media (max-width:1280px) {
     .house img {
         top: -60px;
