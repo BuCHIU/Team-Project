@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-.container {
+.container-all {
     width: 100vw;
     height: 100vh;
     position: absolute;
@@ -128,17 +128,6 @@ p {
     align-items: center;
 }
 
-/* @keyframes typing {
-    from { 
-        width: 0;
-    }
-}
-@keyframes caret {
-    50% {
-        border-right-color: black;
-    }
-} */
-
 .screen-words {
     position: fixed;
     width: 27%;
@@ -146,13 +135,6 @@ p {
     left: 20%;
     top: 40%;
 }
-
-/* .screen-words-2 {
-    width: 20%;
-    overflow: hidden;
-    white-space: nowrap;
-} */
-
 
 .room-pic {
     width: 100%;
@@ -203,7 +185,17 @@ p {
     border-radius: 10px 10px 0 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.pc-title {
+    color: white;
+    padding-left: 20px;
+}
+
+/* #carouselExampleIndicators {
+    height: 300px;
+} */
 
 .close-slide {
     width: 25px;
@@ -222,6 +214,10 @@ button {
     top: 100px !important;
     cursor: url("../img/podium_pc/pointer.ico"), auto;
 }
+
+/* .carousel-inner {
+    height: 300px;
+} */
 
 .words {
     font-size: 20px;
@@ -284,9 +280,15 @@ button {
     .words {
         padding: 20px;
     }
-
+    
     .pc-close {
         left: 70%;
+    }
+}
+
+@media (max-height: 1024px) {
+    .carousel-inner, .carousel {
+        height: 57vh;
     }
 }
 
@@ -306,9 +308,28 @@ button {
     }
 }
 
+@media (max-height: 880px) {
+    p {
+        margin-top: -20px !important;
+    }
+    .carousel-inner, .carousel {
+        height: 50vh;
+    }
+}
+
 @media (max-width: 700px) {
     .pc-close {
         left: 60%;
+    }
+}
+
+@media (max-height: 650px) {
+    .mouse {
+        height: 60px;
+    }
+    
+    p {
+        margin-top: -40px !important;
     }
 }
 
@@ -325,6 +346,16 @@ button {
 @media (max-width: 500px) {
     .pc-close {
         left: 40%;
+    }
+}
+
+@media (max-height: 500px) {
+    .mouse {
+        height: 50px;
+    }
+    
+    p {
+        margin-top: -60px !important;
     }
 }
 
@@ -353,6 +384,16 @@ button {
 @media (max-width: 400px) {
     .pc-close {
         left: 30%;
+    }
+}
+
+@media (max-height: 400px) {
+    .mouse {
+        height: 35px;
+    }
+
+    p {
+        margin-top: -80px !important;
     }
 }
 
