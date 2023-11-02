@@ -417,8 +417,58 @@ loaderFanSwitch.load('model/fan/SWITCH_NO_MOO.glb', function (gltf) {
 const loaderFanSwitch2 = new GLTFLoader();
 let modelFanSwitch2;
 loaderFanSwitch2.load('model/fan/SWITCH_NO_MOO_P2.glb', function (gltf) {
-
+    
     modelFanSwitch2 = gltf.scene;
+    
+});
+
+// 模型電燈開關-關
+const loaderLightSwitch = new GLTFLoader();
+let modelLightSwitch;
+loaderLightSwitch.load('model/light/SWITCH_LIGHT.glb', function (gltf) {
+
+    modelLightSwitch = gltf.scene;
+    scene.add(modelLightSwitch);
+
+});
+
+// 模型電燈開關-開
+const loaderLightSwitch2 = new GLTFLoader();
+let modelLightSwitch2;
+loaderLightSwitch2.load('model/light/SWITCH_LIGHT_P2.glb', function (gltf) {
+
+    modelLightSwitch2 = gltf.scene;
+
+});
+
+let lightClosed = true;
+// 模型電燈座
+const loaderLight = new GLTFLoader();
+let modelLight;
+loaderLight.load('model/light/LIGHT.glb', function (gltf) {
+
+    modelLight = gltf.scene;
+    scene.add(modelLight);
+
+});
+
+// 模型電燈泡本身-暗
+const loaderLightOFF = new GLTFLoader();
+let modelLightOFF;
+loaderLightOFF.load('model/light/LIGHT_P2.glb', function (gltf) {
+
+    modelLightOFF = gltf.scene;
+    scene.add(modelLightOFF);
+
+});
+
+// 模型電燈泡本身-亮
+const loaderLightON = new GLTFLoader();
+let modelLightON;
+loaderLightON.load('model/light/LIGHT_P2_ON.glb', function (gltf) {
+
+    modelLightON = gltf.scene;
+    // scene.add(modelLightON);
 
 });
 
@@ -533,6 +583,7 @@ function onMouseMove(event) {
     let intersectsChicken = raycaster.intersectObject(modelOther.children[2]);
     let intersectsNameBoard = raycaster.intersectObject(modelOther.children[4]);
     let intersects = raycaster.intersectObject(modelOther.children[5]);
+    let intersectsLightSwitch = raycaster.intersectObject(modelLightSwitch);
 
     if (intersectsTVsc.length > 0 && TVclosed == true) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電視螢幕。`;
@@ -557,6 +608,10 @@ function onMouseMove(event) {
         questionArea.style.display = 'block';
     } else if (intersectsFanSwitch.length > 0) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電風扇開關。`;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'block';
+    } else if (intersectsLightSwitch.length > 0) {
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電燈開關。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChairNA.length > 0) {
@@ -657,6 +712,7 @@ function onClick(event) {
     let intersectsScreen = raycaster.intersectObject(modelScreen);
     let intersectsACC = raycaster.intersectObject(modelACC);
     let intersectsWBM = raycaster.intersectObject(modelWBM);
+    let intersectsLightSwitch = raycaster.intersectObject(modelLightSwitch);
 
     // 地板變顏色
     if (intersectsFloor.length > 0) {
@@ -757,6 +813,26 @@ function onClick(event) {
             scene.add(modelTVsc);
         }
         TVclosed = !TVclosed;
+    }
+
+    // 創建音訊
+    const soundLight = new Audio('sound/tv_sound.mp3');
+    // 電燈打開
+    if (intersectsLightSwitch.length > 0) {
+        if (lightClosed) {
+            soundLight.play();
+            scene.remove(modelLightSwitch);
+            scene.remove(modelLightOFF);
+            scene.add(modelLightSwitch2);
+            scene.add(modelLightON);
+        } else {
+            soundLight.play();
+            scene.remove(modelLightSwitch2);
+            scene.remove(modelLightON);
+            scene.add(modelLightSwitch);
+            scene.add(modelLightOFF);
+        }
+        lightClosed = !lightClosed;
     }
 
     // 精靈帽子消失出現
