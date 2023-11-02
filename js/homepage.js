@@ -12,5 +12,5 @@ Btn1.addEventListener("mouseout", function () {
 });
 
 Btn1.addEventListener('click', () => {
-    window.location.href = "loading.html";
+    window.location.href = "enterroom.html";
 })
