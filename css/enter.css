@@ -55,6 +55,7 @@ body {
     bottom: 20px;
     left: 120px;
     display: none;
+    justify-content: center;
 }
 
 .qm {
@@ -96,6 +97,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .clickable-icon {
@@ -105,7 +107,12 @@ p {
 }
 
 .words-p {
-    font-size: 20px;
+    font-size: 14px;
+    line-height: 16px;
+    width: 100%;
+    /* padding: 2%; */
+    display: flex;
+    /* flex-wrap: wrap; */
 }
 
 .box {
@@ -113,7 +120,7 @@ p {
     height: 80%;
     border-radius: 5px;
     border: 5px solid black;
-    background-color: white;
+    background-color: rgb(243,243,243);
     position: fixed;
     left: calc(25% / 2);
     top: calc(20% / 2);
@@ -125,20 +132,43 @@ p {
     width: 100%;
     height: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
 .screen-words {
-    position: fixed;
-    width: 27%;
-    height: 50%;
-    left: 20%;
-    top: 40%;
+    position: relative;
+    width: 30%;
+    left: 10%;
+    min-width: 108px;
 }
 
 .room-pic {
+    width: 50%;
+    padding-right: 5%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.room {
     width: 100%;
-    height: 90%;
+    margin-bottom: 5%;
+}
+
+.falls {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.fall-1 {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
 }
 
 .pc {
@@ -316,6 +346,12 @@ button {
         height: 50vh;
     }
 }
+@media (max-height: 880px) {
+    .fall-1 {
+        width: 65px;
+        height: 65px;
+    }
+}
 
 @media (max-width: 700px) {
     .pc-close {
@@ -331,6 +367,10 @@ button {
     p {
         margin-top: -40px !important;
     }
+
+    .words-p {
+        margin-top: 20%;
+    }
 }
 
 @media (max-width: 570px) {
@@ -341,11 +381,35 @@ button {
     .pc-close {
         left: 50%;
     }
+
+    .fall-1 {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-height: 570px) {
+    .screen-words {
+        font-size: 14px;
+    }
+
+    .room {
+        width: 80%;
+    }
+
+    .fall-1 {
+        width: 50px;
+        height: 50px;
+    }
 }
 
 @media (max-width: 500px) {
     .pc-close {
         left: 40%;
+    }
+
+    .screen-words {
+        font-size: 14px;
     }
 }
 
@@ -357,6 +421,19 @@ button {
     p {
         margin-top: -60px !important;
     }
+
+    .screen-words {
+        min-width: 108px;
+    }
+
+    .fall-1 {
+        width: 30px;
+        height: 30px;
+    }
+
+    .words-p {
+        margin-top: 25%;
+    }
 }
 
 @media (max-width: 430px) {
@@ -366,17 +443,15 @@ button {
 
     p {
         flex-direction: column;
-        justify-content: space-around;
+        margin-top: -10px !important;
     }
 
     .clickable-icon {
         width: 60px;
         height: 60px;
         margin-top: 50px;
-    }
-
-    .words-p {
-        margin-top: -70px;
+        position: absolute;
+        top: -30px;
     }
 
 }
@@ -394,6 +469,14 @@ button {
 
     p {
         margin-top: -80px !important;
+    }
+
+    .screen-words {
+        font-size: 12px;
+    }
+
+    .pp {
+        margin-top: 50%;
     }
 }
 

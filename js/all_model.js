@@ -593,9 +593,7 @@ function onMouseMove(event) {
         questionArea.style.display = 'block';
     } else if (intersectsWBM.length > 0) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">
-        <div class="words-p">
-        會動的白板。
-        </div>`;
+        會動的白板。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHAT.length > 0) {
@@ -603,23 +601,31 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsRedTea.length > 0) {
-        words.innerHTML = "其實有加珍珠的紅茶。";
+        words.innerHTML = `
+        <div class="words-p pp">
+            其實有加珍珠的紅茶。
+        </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsChicken.length > 0) {
         words.innerHTML = "超派～";
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsNameBoard.length > 0) {
-        words.innerHTML = `簽到簽退板。
-        （於勞動部－產業新尖兵訓練，參訓期間相當重要的道具。）`;
+        words.innerHTML = `
+        <div class="words-p">
+            簽到簽退板。
+            （於勞動部－產業新尖兵訓練，參訓期間相當重要的道具。）
+        </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersects.length > 0) {
-        words.innerHTML = `同學的 MacBook Air。
-        `;
+        words.innerHTML = `
+        <div class="words-p pp">
+            同學的 MacBook Air。
+        </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else {
         words.innerHTML = "";
         document.body.style.cursor = 'auto';
