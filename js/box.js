@@ -16,15 +16,28 @@ window.qm = document.querySelector('.qm');
 const qmWords = document.createElement('div');
 window.closeBtn = document.querySelector('.close');
 qmWords.classList.add("words");
-qmWords.innerHTML = `<img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
-左鍵<br>
-旋轉鏡頭
-<img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
-滾輪<br>
-縮放鏡頭
-<img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
-右鍵<br>
-平移鏡頭`;
+qmWords.innerHTML = `
+<div class="words-m">
+    <img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
+    <div class="words-s">
+    左鍵<br>
+    旋轉鏡頭
+    </div>
+</div>
+<div class="words-m">
+    <img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
+    <div class="words-s">
+    滾輪<br>
+    縮放鏡頭
+    </div>
+</div>
+<div class="words-m">
+    <img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
+    <div class="words-s">
+    右鍵<br>
+    平移鏡頭
+    </div>
+</div>`;
 qm.appendChild(qmWords);
 // qm.appendChild(qmIcon);
 setTimeout(() => {
@@ -35,17 +48,29 @@ setTimeout(() => {
 questionIcon.addEventListener('click', () => {
     questionIcon.src = './img/main_icon/question2.png';
     qmWords.classList.add("words");
-    qmWords.innerHTML = `<img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
+    qmWords.innerHTML = `
+<div class="words-m">
+    <img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
+    <div class="words-s">
     左鍵<br>
     旋轉鏡頭
+    </div>
+</div>
+<div class="words-m">
     <img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
+    <div class="words-s">
     滾輪<br>
     縮放鏡頭
+    </div>
+</div>
+<div class="words-m">
     <img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
+    <div class="words-s">
     右鍵<br>
     平移鏡頭
-    `;
-    qm.style.display = 'block';
+    </div>
+</div>`;
+    qm.style.display = 'flex';
 });
 closeBtn.addEventListener('click', () => {
     qm.style.display = 'none';

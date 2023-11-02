@@ -592,7 +592,10 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsWBM.length > 0) {
-        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">會動的白板。`;
+        words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">
+        <div class="words-p">
+        會動的白板。
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHAT.length > 0) {
