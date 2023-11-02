@@ -8,7 +8,6 @@
     width: 100%;
     min-height: 100vh;
     background-color: rgb(123, 187, 187);
-    /* background-color: rgb(52, 130, 130); */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,10 +41,7 @@
 .line {
     height: 20px;
     border-radius: 20px;
-    /* background: linear-gradient(0deg, rgba(255, 137, 137, 1) 0%, rgba(255, 216, 132, 1) 100%); */
-    /* background: linear-gradient(0deg, rgb(123, 187, 187), white); */
     background-color: white;
-    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
     animation: line 6s linear 0s 1 backwards;
 }
 

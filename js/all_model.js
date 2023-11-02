@@ -141,16 +141,6 @@ loaderCandT.load('model/chair_table_01/CHaIR_and_table.glb', function (gltf) {
 
 });
 
-// 模型椅子跟桌子(全)
-const loaderCandTall = new GLTFLoader();
-let modelCandTall;
-loaderCandTall.load('model/chairs_tables/TABLE_AND_CHAIR.glb', function (gltf) {
-
-    modelCandTall = gltf.scene;
-    scene.add(modelCandTall);
-
-});
-
 // 動畫初始狀態
 let chairLIsAnimating = false;
 // 模型會動椅
@@ -417,9 +407,9 @@ loaderFanSwitch.load('model/fan/SWITCH_NO_MOO.glb', function (gltf) {
 const loaderFanSwitch2 = new GLTFLoader();
 let modelFanSwitch2;
 loaderFanSwitch2.load('model/fan/SWITCH_NO_MOO_P2.glb', function (gltf) {
-    
+
     modelFanSwitch2 = gltf.scene;
-    
+
 });
 
 // 模型電燈開關-關
@@ -533,6 +523,29 @@ loaderHat.load('model/other_models/HAT.glb', function (gltf) {
     scene.add(modelHat);
 
 });
+
+// 模型椅子跟桌子(全)
+const loaderCandTall = new GLTFLoader();
+let modelCandTall;
+loaderCandTall.load('model/chairs_tables/TABLE_AND_CHAIR.glb', function (gltf) {
+
+    modelCandTall = gltf.scene;
+    scene.add(modelCandTall);
+
+    const loading = document.querySelector('.container2');
+    loading.classList.add('hide');
+
+},
+    function (load) {
+        const percent = load.loaded / load.total;
+        const loading_text = window.getComputedStyle(document.querySelector('.loader'), '::before');
+        // .getPropertyValue('content');
+        const loading_fill = document.querySelector('.line');
+
+        console.dir(loading_text.width);
+        // loading_text.width = percent * 5 + "px";
+        loading_fill.style.width = percent * 495 + "px";
+    });
 
 // 讓縮放畫面的同時保持原有比例，更新畫面
 window.addEventListener('resize', onresize);
