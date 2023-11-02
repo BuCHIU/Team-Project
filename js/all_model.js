@@ -35,7 +35,7 @@ scene.add(light);
 
 // 攝影機
 const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 3000);
-camera.position.set(1000, 100, 130);
+camera.position.set(750, 130, 130);
 
 // 輔助座標軸
 // const axesHelper = new THREE.AxesHelper(1000);
@@ -44,7 +44,7 @@ camera.position.set(1000, 100, 130);
 
 // 鼠標控制
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 100, 130);
+controls.target.set(0, 130, 130);
 controls.update();
 
 
@@ -545,7 +545,8 @@ loaderCandTall.load('model/chairs_tables/TABLE_AND_CHAIR.glb', function (gltf) {
         console.dir(loading_text.width);
         // loading_text.width = percent * 5 + "px";
         loading_fill.style.width = percent * 495 + "px";
-    });
+    }
+);
 
 // 讓縮放畫面的同時保持原有比例，更新畫面
 window.addEventListener('resize', onresize);

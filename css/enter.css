@@ -47,18 +47,23 @@ body {
 }
 
 .qm, .question-area {
-    width: calc(90% - 80px);
-    height: 30%;
+    width: calc(75% - 80px);
+    height: 20%;
     background-color: rgba(255, 255, 255, 0.85);
     border-radius: 5px;
     position: fixed;
     bottom: 20px;
-    left: 120px;
+    left: 300px;
     display: none;
     justify-content: center;
 }
 
 .qm {
+    width: 80%;
+    height: 60%;
+    top: 250px;
+    left: 200px;
+    background-color: rgba(255, 255, 255, 0.9);
     flex-direction: row-reverse;
     /* flex-wrap: wrap; */
     justify-content: space-around;
@@ -70,8 +75,8 @@ body {
     width: 40px;
     height: 40px;
     margin: 20px 20px 0px 0px;
-    /* position: relative; */
-    /* top: 0px; */
+    position: absolute;
+    right: 0;
     cursor: pointer;
     z-index: 10;
 }
@@ -93,7 +98,7 @@ body {
 p {
     font-size: 20px;
     text-align: center;
-    line-height: 250px;
+    line-height: 230px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,8 +112,8 @@ p {
 }
 
 .words-p {
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 20px;
+    line-height: 25px;
     width: 100%;
     /* padding: 2%; */
     display: flex;
@@ -252,28 +257,45 @@ button {
 .words {
     font-size: 20px;
     /* text-align: center; */
-    padding: 20px 300px;
+    width: 100%;
+    padding: 20px 430px;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .words-m {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .words-s {
-    width: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.words-ss {
+    width: 100px;
+    margin: 0 5px 0 50px;
+    text-align: center;
 }
 
 .mouse {
     /* width: 80px; */
-    height: 100px;
-    margin: 20px 20px 20px 100px;
+    height: 200px;
+    margin: 20px 50px 20px 100px;
 }
 
 
 /* 變版 */
+@media (max-width: 1920px) {
+    .words {
+        padding: 20px 340px;
+    }
+}
+
 @media (max-width: 1730px) {
     .words {
         padding: 20px 80px;
@@ -291,6 +313,14 @@ button {
 }
 
 @media (max-width: 1150px) {
+    .qm {
+        left: 160px;
+    }
+    
+    .question-area {
+        left: 180px;
+    }
+
     .mouse {
         margin: 10px 10px 10px 60px;
     }
@@ -298,8 +328,9 @@ button {
 
 @media (max-width: 1030px) {
     .mouse {
-        height: 80px;
+        height: 150px;
     }
+
     .words {
         padding: 20px 80px;
         font-size: 16px;
@@ -317,14 +348,28 @@ button {
 }
 
 @media (max-height: 1024px) {
+    .qm {
+        top: 150px;
+    }
+
+    .mouse {
+        height: 100px;
+    }
+
     .carousel-inner, .carousel {
         height: 57vh;
+    }
+}
+@media (max-height: 1024px) {
+    p {
+        line-height: 200px;
     }
 }
 
 @media (max-width: 880px) {
     .qm {
-        height: 50%;
+        height: 70%;
+        left: 130px;
     }
 
     .words {
@@ -345,8 +390,7 @@ button {
     .carousel-inner, .carousel {
         height: 50vh;
     }
-}
-@media (max-height: 880px) {
+    
     .fall-1 {
         width: 65px;
         height: 65px;
@@ -354,8 +398,22 @@ button {
 }
 
 @media (max-width: 700px) {
+    .qm {
+        left: 100px;
+    }
+    
     .pc-close {
         left: 60%;
+    }
+}
+
+@media (max-height: 760px) {
+    .qm {
+        top: 100px;
+    }
+
+    .mouse {
+        height: 80px;
     }
 }
 
@@ -363,8 +421,9 @@ button {
     .mouse {
         height: 60px;
     }
-    
+
     p {
+        line-height: 130px;
         margin-top: -40px !important;
     }
 
@@ -442,8 +501,17 @@ button {
     }
 
     p {
+        line-height: 100px;
         flex-direction: column;
         margin-top: -10px !important;
+    }
+
+    .qm {
+        left: 50px;
+    }
+
+    .words-ss {
+        margin: 0 5px 0 30px;
     }
 
     .clickable-icon {
@@ -468,6 +536,7 @@ button {
     }
 
     p {
+        line-height: 250px;
         margin-top: -80px !important;
     }
 
@@ -483,5 +552,9 @@ button {
 @media (max-width: 380px) {
     .mouse {
         margin: 10px 10px 10px 10px;
+    }
+
+    .words-ss {
+        margin: 0 5px 0 10px;
     }
 }

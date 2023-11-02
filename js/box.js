@@ -20,22 +20,34 @@ qmWords.innerHTML = `
 <div class="words-m">
     <img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
     <div class="words-s">
-    左鍵<br>
-    旋轉鏡頭
+        <div class="words-ss">
+            左鍵 
+        </div>
+        <div class="words-ss"> 
+            旋轉鏡頭
+        </div>
     </div>
 </div>
 <div class="words-m">
     <img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
     <div class="words-s">
-    滾輪<br>
-    縮放鏡頭
+        <div class="words-ss">
+            滾輪
+        </div>
+        <div class="words-ss"> 
+            縮放鏡頭
+        </div>
     </div>
 </div>
 <div class="words-m">
     <img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
     <div class="words-s">
-    右鍵<br>
-    平移鏡頭
+        <div class="words-ss">
+            右鍵
+        </div>
+        <div class="words-ss"> 
+            平移鏡頭
+        </div>
     </div>
 </div>`;
 qm.appendChild(qmWords);
@@ -52,22 +64,34 @@ questionIcon.addEventListener('click', () => {
 <div class="words-m">
     <img src="./img/how_to_work/mouse_left.png" alt="左鍵" class="mouse">
     <div class="words-s">
-    左鍵<br>
-    旋轉鏡頭
+        <div class="words-ss">
+            左鍵 
+        </div>
+        <div class="words-ss"> 
+            旋轉鏡頭
+        </div>
     </div>
 </div>
 <div class="words-m">
     <img src="./img/how_to_work/mouse_middle.png" alt="滾輪" class="mouse">
     <div class="words-s">
-    滾輪<br>
-    縮放鏡頭
+        <div class="words-ss">
+            滾輪
+        </div>
+        <div class="words-ss"> 
+            縮放鏡頭
+        </div>
     </div>
 </div>
 <div class="words-m">
     <img src="./img/how_to_work/mouse_right.png" alt="右鍵" class="mouse">
     <div class="words-s">
-    右鍵<br>
-    平移鏡頭
+        <div class="words-ss">
+            右鍵
+        </div>
+        <div class="words-ss"> 
+            平移鏡頭
+        </div>
     </div>
 </div>`;
     qm.style.display = 'flex';
