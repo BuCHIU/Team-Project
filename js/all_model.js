@@ -74,7 +74,7 @@ let modelFall;
 loaderFall.load('model/other_models/FALL.glb', function (gltf) {
 
     modelFall = gltf.scene;
-    scene.add(modelFall);
+    // scene.add(modelFall);
 
 });
 
@@ -393,6 +393,30 @@ loaderFanBlade.load('model/fan/FAN_P222.glb', function (gltf) {
 
 });
 
+// 模型扇葉
+const loaderFall2 = new GLTFLoader();
+let modelFall2, mixerFall2, actionsFall2;
+let clipsFall2 = [];
+loaderFall2.load('model/other_models/FALLANINI.glb', function (gltf) {
+
+    modelFall2 = gltf.scene;
+    scene.add(modelFall2);
+
+    // 找到動畫
+    clipsFall2 = gltf.animations;
+    mixerFall2 = new THREE.AnimationMixer(modelFall2);
+    // 初始化數組
+    actionsFall2 = [];
+
+    // 創建並播放每個 AnimationClip
+    for (let i = 0; i < clipsFall2.length; i++) {
+        const action = mixerFall2.clipAction(clipsFall2[i]);
+        action.play();
+        actionsFall2.push(action);
+    }
+
+});
+
 // 模型吊扇開關-關
 const loaderFanSwitch = new GLTFLoader();
 let modelFanSwitch;
@@ -617,7 +641,9 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChair2.length > 0) {
-        words.innerHTML = "有自我意識的椅子。";
+        words.innerHTML = `<div class="words-p pp">
+        有自我意識的椅子。
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsFanSwitch.length > 0) {
@@ -629,11 +655,16 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsChairNA.length > 0) {
-        words.innerHTML = "不會動的椅子。";
+        words.innerHTML = `<div class="words-p pp">
+        不會動的椅子。
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsBook.length > 0) {
-        words.innerHTML = "奇怪的書本。";
+        words.innerHTML = `
+        <div class="words-p pp">
+        奇怪的書本。
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHat.length > 0) {
@@ -641,7 +672,9 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsClock.length > 0) {
-        words.innerHTML = "時空錯亂的時鐘。";
+        words.innerHTML = `<div class="words-p pp">
+        時空錯亂的時鐘。
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsPodium.length > 0) {
@@ -666,7 +699,9 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsHAT.length > 0) {
-        words.innerHTML = "巫師帽！";
+        words.innerHTML = `<div class="words-p pp">
+        巫師帽！
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsRedTea.length > 0) {
@@ -677,7 +712,9 @@ function onMouseMove(event) {
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'flex';
     } else if (intersectsChicken.length > 0) {
-        words.innerHTML = "超派～";
+        words.innerHTML = `<div class="words-p pp">
+        超派～
+        </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
     } else if (intersectsNameBoard.length > 0) {
@@ -729,24 +766,24 @@ function onClick(event) {
     let intersectsLightSwitch = raycaster.intersectObject(modelLightSwitch);
 
     // 地板變顏色
-    if (intersectsFloor.length > 0) {
-        let colors = [0x8f534f, 0x2f4175, 0x7f5d94, 0xba505c];
-        // let indexColor = 0;
-        let random = colors[Math.floor(Math.random() * 4)];
+    // if (intersectsFloor.length > 0) {
+    //     let colors = [0x8f534f, 0x2f4175, 0x7f5d94, 0xba505c];
+    //     // let indexColor = 0;
+    //     let random = colors[Math.floor(Math.random() * 4)];
 
-        let newMaterial = new THREE.MeshStandardMaterial({
-            color: random,
-            emissive: random,
-            roughness: 0.6,
-            metalness: 0.1
-        });
+    //     let newMaterial = new THREE.MeshStandardMaterial({
+    //         color: random,
+    //         emissive: random,
+    //         roughness: 0.6,
+    //         metalness: 0.1
+    //     });
 
-        // intersectsFloor.forEach(object => {
-        //     console.log(object);
-        //     object.object.material = newMaterial;
-        // })
-        intersectsFloor[0].object.material = newMaterial;
-    }
+    //     // intersectsFloor.forEach(object => {
+    //     //     console.log(object);
+    //     //     object.object.material = newMaterial;
+    //     // })
+    //     intersectsFloor[0].object.material = newMaterial;
+    // }
 
     // 椅子播放動畫
     if (intersectsChair.length > 0) {
@@ -972,6 +1009,10 @@ function animate() {
 
     if (modelWBM && mixerWBM) {
         mixerWBM.update(delta);
+    }
+    
+    if (modelFall2 && mixerFall2) {
+        mixerFall2.update(delta);
     }
 
     controls.update();

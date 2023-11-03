@@ -105,6 +105,6 @@ questionIcon.addEventListener('mouseleave', () => {
     questionIcon.src = './img/main_icon/question3.png';
 });
 
-// 投影幕打字
+
 window.proscreen = document.querySelector('.box');
 window.closebtn = document.querySelector('.box-close');

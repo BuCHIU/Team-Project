@@ -68,10 +68,10 @@
     position: absolute;
     color: #e36941;
     overflow: hidden;
-    /* animation: animloader 6s linear infinite; */
+    animation: animloader 3s linear infinite;
 }
 
-/* @keyframes animloader {
+@keyframes animloader {
     0% {
         width: 0%;
     }
@@ -79,7 +79,7 @@
     100% {
         width: 100%;
     }
-} */
+}
 
 .hide {
     display: none !important;
