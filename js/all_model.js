@@ -566,7 +566,6 @@ loaderCandTall.load('model/chairs_tables/TABLE_AND_CHAIR.glb', function (gltf) {
         // .getPropertyValue('content');
         const loading_fill = document.querySelector('.line');
 
-        console.dir(loading_text.width);
         // loading_text.width = percent * 5 + "px";
         loading_fill.style.width = percent * 495 + "px";
     }
@@ -719,9 +718,9 @@ function onMouseMove(event) {
         questionArea.style.display = 'block';
     } else if (intersectsNameBoard.length > 0) {
         words.innerHTML = `
-        <div class="words-p">
+        <div class="words-p ppp">
             簽到簽退板。
-            （於勞動部－產業新尖兵訓練，參訓期間相當重要的道具。）
+            （勞動部－產業尖兵訓練，參訓期間相當重要的道具。）
         </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'flex';
