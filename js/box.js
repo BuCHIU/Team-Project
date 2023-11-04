@@ -97,7 +97,7 @@ if ( window.innerWidth >= 700 ) {
 </div>`;
 }
 qm.appendChild(qmWords);
-console.log(window);
+// console.log(window);
 setTimeout(() => {
     qm.style.display = 'none';
 }, 8000);

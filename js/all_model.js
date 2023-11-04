@@ -235,7 +235,6 @@ loaderTV.load('model/tv/TV.glb', function (gltf) {
     modelTV = gltf.scene;
     scene.add(modelTV);
 
-
 });
 
 // 模型電視螢幕-關
@@ -393,7 +392,7 @@ loaderFanBlade.load('model/fan/FAN_P222.glb', function (gltf) {
 
 });
 
-// 模型扇葉
+// 模型會動人
 const loaderFall2 = new GLTFLoader();
 let modelFall2, mixerFall2, actionsFall2;
 let clipsFall2 = [];
@@ -413,6 +412,30 @@ loaderFall2.load('model/other_models/FALLANINI.glb', function (gltf) {
         const action = mixerFall2.clipAction(clipsFall2[i]);
         action.play();
         actionsFall2.push(action);
+    }
+
+});
+
+// 模型會動人
+const loaderBookA1 = new GLTFLoader();
+let modelBookA1, mixerBookA1, actionsBookA1;
+let clipsBookA1 = [];
+loaderBookA1.load('model/other_models/BOOK-rig-animation.glb', function (gltf) {
+
+    modelBookA1 = gltf.scene;
+    scene.add(modelBookA1);
+
+    // 找到動畫
+    clipsBookA1 = gltf.animations;
+    mixerBookA1 = new THREE.AnimationMixer(modelBookA1);
+    // 初始化數組
+    actionsBookA1 = [];
+
+    // 創建並播放每個 AnimationClip
+    for (let i = 0; i < clipsBookA1.length; i++) {
+        const action = mixerBookA1.clipAction(clipsBookA1[i]);
+        action.play();
+        actionsBookA1.push(action);
     }
 
 });
@@ -496,14 +519,40 @@ loaderBook.load('model/other_models/BOOK.glb', function (gltf) {
 
 });
 
-// 模型其他雜物
-const loaderOther = new GLTFLoader();
-let modelOther;
-loaderOther.load('model/other_models/PROP.glb', function (gltf) {
+// 模型其他雜物-不會動
+const loaderOtherNA = new GLTFLoader();
+let modelOtherNA
+loaderOtherNA.load('model/other_models/PROPNOMOVE.glb', function (gltf) {
 
-    modelOther = gltf.scene;
-    scene.add(modelOther);
+    modelOtherNA = gltf.scene;
+    modelOtherNA.children[0].visible = false;
+    scene.add(modelOtherNA);
 
+    console.log(modelOtherNA);
+
+});
+
+// 模型其他雜物-會動
+const loaderOtherA = new GLTFLoader();
+let modelOtherA, mixerOtherA, actionsOtherA;
+let clipsOtherA = [];
+loaderOtherA.load('model/other_models/PROPMOVE.glb', function (gltf) {
+
+    modelOtherA = gltf.scene;
+    scene.add(modelOtherA);
+    
+    // 找到動畫
+    clipsOtherA = gltf.animations;
+    mixerOtherA = new THREE.AnimationMixer(modelOtherA);
+    // 初始化數組
+    actionsOtherA = [];
+
+    // 創建並播放每個 AnimationClip
+    for (let i = 0; i < clipsOtherA.length; i++) {
+        const action = mixerOtherA.clipAction(clipsOtherA[i]);
+        action.play();
+        actionsOtherA.push(action);
+    }
 });
 
 // 模型講桌椅
@@ -609,18 +658,21 @@ function onMouseMove(event) {
     let intersectsChairNA = raycaster.intersectObject(modelChairNA);
     let intersectsBook = raycaster.intersectObject(modelBook);
     let intersectsClock = raycaster.intersectObject(modelClock);
-    let intersectsHat = raycaster.intersectObject(modelHat);
     let intersectsPodium = raycaster.intersectObject(modelPodium);
     let intersectsSpeaker = raycaster.intersectObject(modelSpeaker);
     let intersectsScreen = raycaster.intersectObject(modelScreen);
     let intersectsACC = raycaster.intersectObject(modelACC);
     let intersectsWBM = raycaster.intersectObject(modelWBM);
-    let intersectsHAT = raycaster.intersectObject(modelOther.children[0]);
-    let intersectsRedTea = raycaster.intersectObject(modelOther.children[1]);
-    let intersectsChicken = raycaster.intersectObject(modelOther.children[2]);
-    let intersectsNameBoard = raycaster.intersectObject(modelOther.children[4]);
-    let intersects = raycaster.intersectObject(modelOther.children[5]);
     let intersectsLightSwitch = raycaster.intersectObject(modelLightSwitch);
+    let intersectsHat2 = raycaster.intersectObject(modelOtherA.children[0]);
+    let intersectsRedTea = raycaster.intersectObject(modelOtherA.children[1]);
+    let intersectsPen = raycaster.intersectObject(modelOtherA.children[2]);
+    let intersectsHat = raycaster.intersectObject(modelHat);
+    let intersectsChicken = raycaster.intersectObject(modelOtherNA.children[2]);
+    let intersectsNameBoard = raycaster.intersectObject(modelOtherNA.children[3]);
+    let intersectsMBA = raycaster.intersectObject(modelOtherNA.children[4]);
+    
+    // console.log(modelOtherA.children);
 
     if (intersectsTVsc.length > 0 && TVclosed == true) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電視螢幕。`;
@@ -644,7 +696,7 @@ function onMouseMove(event) {
         有自我意識的椅子。
         </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsFanSwitch.length > 0) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">電風扇開關。`;
         document.body.style.cursor = 'pointer';
@@ -658,14 +710,14 @@ function onMouseMove(event) {
         不會動的椅子。
         </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsBook.length > 0) {
         words.innerHTML = `
         <div class="words-p pp">
         奇怪的書本。
         </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsHat.length > 0) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">精靈的帽子。`;
         document.body.style.cursor = 'pointer';
@@ -675,7 +727,7 @@ function onMouseMove(event) {
         時空錯亂的時鐘。
         </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsPodium.length > 0) {
         words.innerHTML = `<img src="./img/how_to_work/cursor_3.png" alt="可點擊" class="clickable-icon">講桌。`;
         document.body.style.cursor = 'pointer';
@@ -697,16 +749,31 @@ function onMouseMove(event) {
         會動的白板。`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'block';
-    } else if (intersectsHAT.length > 0) {
-        words.innerHTML = `<div class="words-p pp">
-        巫師帽！
+    } else if (intersectsHat2.length > 0) {
+        words.innerHTML = `
+        <div class="words-p pp">
+            巫師帽！
         </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsRedTea.length > 0) {
         words.innerHTML = `
         <div class="words-p pp">
             其實有加珍珠的紅茶。
+        </div>`;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'flex';
+    } else if (intersectsPen.length > 0) {
+        words.innerHTML = `
+        <div class="words-p pp">
+            簽名用原子筆。
+        </div>`;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'flex';
+    } else if (intersectsMBA.length > 0) {
+        words.innerHTML = `
+        <div class="words-p pp">
+            同學的 MacBook Air。
         </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'flex';
@@ -715,19 +782,12 @@ function onMouseMove(event) {
         超派～
         </div>`;
         document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'block';
+        questionArea.style.display = 'flex';
     } else if (intersectsNameBoard.length > 0) {
         words.innerHTML = `
         <div class="words-p ppp">
             簽到簽退板。
             （勞動部－產業尖兵訓練，參訓期間相當重要的道具。）
-        </div>`;
-        document.body.style.cursor = 'pointer';
-        questionArea.style.display = 'flex';
-    } else if (intersects.length > 0) {
-        words.innerHTML = `
-        <div class="words-p pp">
-            同學的 MacBook Air。
         </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'flex';
@@ -1012,6 +1072,14 @@ function animate() {
     
     if (modelFall2 && mixerFall2) {
         mixerFall2.update(delta);
+    }
+    
+    if (modelOtherA && mixerOtherA) {
+        mixerOtherA.update(delta);
+    }
+    
+    if (modelBookA1 && mixerBookA1) {
+        mixerBookA1.update(delta);
     }
 
     controls.update();

@@ -115,12 +115,16 @@ p {
     font-size: 20px;
     line-height: 25px;
     width: 100%;
-    padding: 7%;
+    padding: 7% 0 7% 0;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     /* flex-wrap: wrap; */
+}
+
+.pp {
+    max-width: 300px;
 }
 
 .box {
@@ -371,6 +375,10 @@ button {
 }
 
 @media (max-width: 1024px) { 
+    p {
+        line-height: 180px !important;
+    }
+
     .words {
         max-width: 690px;
     } 
