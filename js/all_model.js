@@ -440,15 +440,19 @@ loaderBookA1.load('model/other_models/BOOK-rig-animation.glb', function (gltf) {
 
 });
 
-// 模型會動白板
+// 模型會動書2
 const loaderBookA2 = new GLTFLoader();
 let modelBookA2, clipBookA2, actionBookA2, mixerBookA2;
-loaderBookA2.load('model/other_models/BOOK-float.glb', function (gltf) {
+loaderBookA2.load('model/other_models/book-float-new.glb', function (gltf) {
+
     modelBookA2 = gltf.scene;
+    modelBookA2.position.set( 0, 0, 18);
     scene.add(modelBookA2);
 
+    console.log(gltf);
+
     // 找到動畫
-    clipBookA2 = THREE.AnimationClip.findByName(gltf.animations, "BOOK-float");
+    clipBookA2 = THREE.AnimationClip.findByName(gltf.animations, "BOOK-floatAction");
     if (clipBookA2) {
         mixerBookA2 = new THREE.AnimationMixer(modelBookA2);
         actionBookA2 = mixerBookA2.clipAction(clipBookA2);
@@ -671,6 +675,8 @@ function onMouseMove(event) {
     let intersectsTVsc = raycaster.intersectObject(modelTVsc);
     let intersectsChairNA = raycaster.intersectObject(modelChairNA);
     let intersectsBook = raycaster.intersectObject(modelBook);
+    let intersectsBookA1 = raycaster.intersectObject(modelBookA1);
+    let intersectsBookA2 = raycaster.intersectObject(modelBookA2);
     let intersectsClock = raycaster.intersectObject(modelClock);
     let intersectsPodium = raycaster.intersectObject(modelPodium);
     let intersectsSpeaker = raycaster.intersectObject(modelSpeaker);
@@ -745,7 +751,21 @@ function onMouseMove(event) {
     } else if (intersectsBook.length > 0) {
         words.innerHTML = `
         <div class="words-p pp">
-        奇怪的書本。
+        Never gonna give you up ~
+        </div>`;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'flex';
+    } else if (intersectsBookA1.length > 0) {
+        words.innerHTML = `
+        <div class="words-p pp">
+        好像有人在看書...
+        </div>`;
+        document.body.style.cursor = 'pointer';
+        questionArea.style.display = 'flex';
+    } else if (intersectsBookA2.length > 0) {
+        words.innerHTML = `
+        <div class="words-p pp">
+        輕飄飄～
         </div>`;
         document.body.style.cursor = 'pointer';
         questionArea.style.display = 'flex';
