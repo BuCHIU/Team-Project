@@ -203,8 +203,6 @@ p {
 .pc-close {
     cursor: url("../img/podium_pc/pointer.ico"), auto;
     z-index: 12;
-    position: relative;
-    left: 80%;
 }
 
 .picture-move {
@@ -325,11 +323,6 @@ button {
     }
 
 }
-@media (max-width: 1260px) {
-    .pc-close {
-        left: 75%;
-    }
-}
 
 @media (max-width: 1150px) {
     .qm {
@@ -382,10 +375,6 @@ button {
     .words {
         max-width: 690px;
     } 
-
-    .pc-close {
-        left: 70%;
-    }
 }
 
 @media (max-width: 880px) {
@@ -407,10 +396,6 @@ button {
 
     .words-p {
         margin-top: 10%;
-    }
-
-    .pc-close {
-        left: 65%;
     }
 }
 
@@ -440,10 +425,6 @@ button {
     .words-p {
         margin-top: 15%;
     }
-    
-    .pc-close {
-        left: 60%;
-    }
 }
 
 
@@ -457,10 +438,6 @@ button {
         left: 80px;
     }
 
-    .pc-close {
-        left: 50%;
-    }
-
     .fall-1 {
         width: 50px;
         height: 50px;
@@ -469,10 +446,6 @@ button {
 
 
 @media (max-width: 500px) {
-    .pc-close {
-        left: 40%;
-    }
-
     .screen-words {
         font-size: 14px;
     }
@@ -516,10 +489,6 @@ button {
 }
 
 @media (max-width: 400px) {
-    .pc-close {
-        left: 30%;
-    }
-
     .words-ppp {
         font-size: 8px;
     }

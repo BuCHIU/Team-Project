@@ -416,7 +416,7 @@ loaderFall2.load('model/other_models/FALLANINI.glb', function (gltf) {
 
 });
 
-// 模型會動人
+// 模型翻頁書
 const loaderBookA1 = new GLTFLoader();
 let modelBookA1, mixerBookA1, actionsBookA1;
 let clipsBookA1 = [];
@@ -438,6 +438,22 @@ loaderBookA1.load('model/other_models/BOOK-rig-animation.glb', function (gltf) {
         actionsBookA1.push(action);
     }
 
+});
+
+// 模型會動白板
+const loaderBookA2 = new GLTFLoader();
+let modelBookA2, clipBookA2, actionBookA2, mixerBookA2;
+loaderBookA2.load('model/other_models/BOOK-float.glb', function (gltf) {
+    modelBookA2 = gltf.scene;
+    scene.add(modelBookA2);
+
+    // 找到動畫
+    clipBookA2 = THREE.AnimationClip.findByName(gltf.animations, "BOOK-float");
+    if (clipBookA2) {
+        mixerBookA2 = new THREE.AnimationMixer(modelBookA2);
+        actionBookA2 = mixerBookA2.clipAction(clipBookA2);
+    }
+    actionBookA2.play();
 });
 
 // 模型吊扇開關-關
@@ -527,8 +543,6 @@ loaderOtherNA.load('model/other_models/PROPNOMOVE.glb', function (gltf) {
     modelOtherNA = gltf.scene;
     modelOtherNA.children[0].visible = false;
     scene.add(modelOtherNA);
-
-    console.log(modelOtherNA);
 
 });
 
@@ -1113,6 +1127,10 @@ function animate() {
     
     if (modelBookA1 && mixerBookA1) {
         mixerBookA1.update(delta);
+    }
+    
+    if (modelBookA2 && mixerBookA2) {
+        mixerBookA2.update(delta);
     }
 
     controls.update();
