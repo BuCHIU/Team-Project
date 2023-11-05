@@ -51,14 +51,14 @@ controls.update();
 // 模型牆壁
 const loaderWall = new GLTFLoader();
 let modelWall;
-loaderWall.load('model/WALL.glb', function (gltf) {
+loaderWall.load('model/GRASS.glb', function (gltf) {
 
     modelWall = gltf.scene;
     scene.add(modelWall);
 
 });
 
-// 模型牆壁
+// 模型地板
 const loaderFloor = new GLTFLoader();
 let modelFloor;
 loaderFloor.load('model/fLOOR.glb', function (gltf) {
