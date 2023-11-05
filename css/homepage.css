@@ -86,19 +86,19 @@
 
 @media (max-width:1920px) {
     .logo {
-        left: 230px;
+        left: 326px;
     }
 }
 
 @media (max-width:1200px) {
     .logo {
-        left: 167px;
+        left: 200px;
     }
 }
 
 @media (max-width:1024px) {
     .logo {
-        left: 136px;
+        left: 170px;
     }
 }
 
@@ -175,19 +175,19 @@
 @media (max-width:2560px) {
     .house img {
         top: 52%;
-        left: 48.5%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height: 801px;
+        height: 565px;
         /* display: none; */
     }
 }
 
 @media (max-width:1763px) {
     .house img {
-        top: 52%;
-        left: 48.5%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        height: 697px;
+        height: 565px;
         /* display: none; */
     }
 }
@@ -195,39 +195,39 @@
 @media (max-width:1745px) {
     .house img {
         top: 68.5%;
-        left: 48.5%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        height:702px;
+        height:565px;
         /* display: none; */
     }
 }
 
 @media (max-width:1720px) {
     .house img {
-        top: 68%;
-        left: 49%;
+        top: 66%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height: 697px;
+        height: 513px;
         /* display: none; */
     }
 }
 
 @media (max-width:1535px) {
     .house img {
-        top: 67%;
-        left: 48.5%;
+        top: 66%;
+        left: 50.5%;
         transform: translate(-50%, -50%);
-        height:667px;
+        height:486px;
         /* display: none; */
     }
 }
 
 @media (max-width:1500px) {
     .house img {
-        top: 67%;
-        left: 48.5%;
+        top: 66%;
+        left: 50.5%;
         transform: translate(-50%, -50%);
-        height:654px;
+        height:489px;
         /* display: none; */
     }
 }
@@ -235,19 +235,19 @@
 @media (max-width:1440px) {
     .house img {
         top: 57%;
-        left: 48.8%;
+        left: 50.8%;
         transform: translate(-50%, -50%);
-        height:682px;
+        height:498px;
         /* display: none; */
     }
 }
 
 @media (max-width:1380px) {
     .house img {
-        top: 65%;
-        left: 48.8%;
+        top: 64%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        height:682px;
+        height:474px;
         /* display: none; */
     }
 }
@@ -255,10 +255,10 @@
 @media (max-width:1280px) {
 
     .house img {
-        top: 60.5%;
-        left: 49%;
+        top: 61%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height:566px;
+        height:470px;
         /* display: none; */
     
     }
@@ -267,10 +267,10 @@
 @media (max-width:1230px) {
 
     .house img {
-        top: 60.5%;
-        left: 47.6%;
+        top: 61%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height:566px;
+        height:450px;
         /* display: none; */
     
     }
@@ -278,10 +278,10 @@
 
 @media (max-width:1200px) {
     .house img {
-        top: 62%;
-        left: 49%;
+        top: 61%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height:547px;
+        height:450px;
         /* display: none; */
     }
 }
@@ -289,29 +289,30 @@
 
 @media (max-width:1100px) {
     .house img {
-        top: 62%;
-        left: 49%;
+        top: 61%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height: 532px;
+        height:419px;
+        /* display: none; */
     }
 }
 
 @media (max-width:1040px) {
     .house img {
-        top: 62%;
-        left: 49%;
+        top: 61%;
+        left: 51%;
         transform: translate(-50%, -50%);
-        height: 532px;
+        height: 413px;
     }
 }
 
 
 @media (max-width:1024px) {
     .house img {
-        top: 21%;
-        left: 46.5%;
+        top: 23%;
+        left: 50.5%;
         transform: translate(-50%, -50%);
-        height: 755px;
+        height: 602px;
     }
 }
 
@@ -319,73 +320,64 @@
 @media (max-width:768px) {
     .house img {
         top: 20%;
-        left: 45.5%;
+        left: 51.5%;
         transform: translate(-50%, -50%);
-        height: 665px;
+        height: 478px;
     }
 }
 
 @media (max-width:650px) {
     .house img {
-        top: 25%;
-        left: 45.5%;
+        top: 20%;
+        left: 51.5%;
         transform: translate(-50%, -50%);
-        height: 600px;
+        height: 478px;
     }
 }
 
 @media (max-width:545px) {
     .house img {
-        top: 25%;
-        left: 43.5%;
+        top: 20%;
+        left: 51.5%;
         transform: translate(-50%, -50%);
-        height: 550px;
+        height: 395px;
     }
 }
 
-@media (max-width:545px) {
-    .house img {
-        top: 25%;
-        left: 43.5%;
-        transform: translate(-50%, -50%);
-        height: 500px;
-    }
-}
 
 @media (max-width:436px) {
     .house img {
-        top: 22%;
-        left: 43.5%;
+        top: 20%;
+        left: 51.5%;
         transform: translate(-50%, -50%);
-        height: 430px;
-        /* display: none; */
+        height: 338px;
     }
 }
 
 @media (max-width:425px) {
     .house img {
         top: 12%;
-        left: 43.5%;
+        left: 51.5%;
         transform: translate(-50%, -50%);
-        height: 429px;
+        height: 295px;
     }
 }
 
 @media (max-width:390px) {
     .house img {
         top: 12%;
-        left: 45.5%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        height: 429px;
+        height: 295px;
     }
 }
 
 @media (max-width:375px) {
     .house img {
-        top: 11%;
-        left: 46.5%;
+        top: 12%;
+        left: 50%;
         transform: translate(-50%, -50%);
-        height: 364px;
+        height: 295px;
     }
 }
 
@@ -568,6 +560,14 @@
     }
 }
 
+@media (max-width:545px) {
+    .section-1 {
+        padding-top: 492px;
+        /* height: 21.5dvh; */
+    }
+}
+
+
 @media (max-width:436px) {
     .section-1 {
         padding-top: 500px;
@@ -687,7 +687,7 @@
 
 @media (max-width:1040px) {
     .picture {
-        width: 125px;
+        width: 100px;
         margin: 0 10px;
     }
 }
@@ -801,6 +801,12 @@
     line-height: 20px;
     text-align: center;
     display: none;
+}
+
+@media (max-width:1040px) {
+    .title {
+       font-size: 14px;
+    }
 }
 
 
@@ -1139,8 +1145,14 @@
     padding-right: 10px;
 }
 
+@media (max-width:1040px) {
+    .title-R {
+        font-size: 14px;
+    }
+}
+
 @media (max-width:425px) {
-    .title {
+    .title-R {
         text-align: center;
     }
 }
