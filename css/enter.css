@@ -18,7 +18,8 @@ body {
     display: flex;
 }
 
-.logo-area, .exit-area {
+.logo-area,
+.exit-area {
     width: 50%;
     cursor: pointer;
 }
@@ -46,7 +47,8 @@ body {
     cursor: pointer;
 }
 
-.qm, .question-area {
+.qm,
+.question-area {
     width: calc(75% - 80px);
     height: 20%;
     background-color: rgba(255, 255, 255, 0.85);
@@ -132,7 +134,7 @@ p {
     height: 80%;
     border-radius: 5px;
     border: 5px solid black;
-    background-color: rgb(243,243,243);
+    background-color: rgb(243, 243, 243);
     position: fixed;
     left: calc(25% / 2);
     top: calc(20% / 2);
@@ -328,11 +330,11 @@ button {
     .qm {
         left: 160px;
     }
-    
+
     .question-area {
         left: 180px;
     }
-    
+
     .mouse {
         margin: 10px 10px 10px 60px;
     }
@@ -345,7 +347,7 @@ button {
     .words {
         max-width: 700px;
     }
-    
+
     /* .words-p {
         margin-top: 5%;
     } */
@@ -367,20 +369,21 @@ button {
     }
 }
 
-@media (max-width: 1024px) { 
+@media (max-width: 1024px) {
     p {
         line-height: 180px !important;
     }
 
     .words {
         max-width: 690px;
-    } 
+    }
 }
 
 @media (max-width: 880px) {
     .qm {
-        height: 70%;
+        height: 80%;
         left: 130px;
+        top: 10%;
     }
 
     .words {
@@ -430,8 +433,9 @@ button {
 
 @media (max-width: 600px) {
     .qm {
+        height: 85%;
         left: 80px;
-        top: 150px;
+        top: 80px;
     }
 
     .question-area {
