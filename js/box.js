@@ -100,7 +100,7 @@ qm.appendChild(qmWords);
 // console.log(window);
 setTimeout(() => {
     qm.style.display = 'none';
-}, 8000);
+}, 5000);
 
 
 // 問號出說明
