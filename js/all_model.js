@@ -34,7 +34,7 @@ light = new THREE.HemisphereLight(0xfcfcfa, 0x3f3f4a, 7);
 scene.add(light);
 
 // 攝影機
-const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 3000);
+const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 7000);
 camera.position.set(750, 130, 130);
 
 // 輔助座標軸
