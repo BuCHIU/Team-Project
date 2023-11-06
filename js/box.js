@@ -9,7 +9,7 @@ exitBtn.addEventListener('click', () => {
 });
 
 
-// 載入頁面後出現說明欄 3 秒
+// 載入頁面後出現說明欄 5 秒
 window.questionIcon = document.querySelector('.question');
 window.questionArea = document.querySelector('.question-area');
 window.qm = document.querySelector('.qm');
