@@ -1390,6 +1390,7 @@
 .playBtn {
     width: 200px;
     margin: auto;
+    cursor: pointer;
 }
 
 @media (max-width:1200px) {
