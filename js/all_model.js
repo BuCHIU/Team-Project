@@ -1000,10 +1000,6 @@ function onClick(event) {
         closeBtnPC.addEventListener('click', () => {
             screenPC.style.display = 'none';
         })
-        
-        document.addEventListener('click',function(){
-            screenPC.style.display = 'none';
-        },true);
     }
     
     // 投影幕放⋯⋯教室介紹

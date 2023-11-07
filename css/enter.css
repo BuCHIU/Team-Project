@@ -62,8 +62,8 @@ body {
 
 .qm {
     width: 80%;
-    height: 60%;
-    top: 250px;
+    height: 75%;
+    top: 150px;
     left: 200px;
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
@@ -362,7 +362,7 @@ button {
     }
 
     .words-mm {
-        font-size: 24px;
+        font-size: 26px;
     }
 }
 
@@ -378,9 +378,13 @@ button {
 
 @media (max-width: 880px) {
     .qm {
-        height: 80%;
+        height: 90%;
         left: 130px;
-        top: 10%;
+        top: 8%;
+    }
+
+    .mouse {
+        height: 100px;
     }
 
     .words {
@@ -391,7 +395,7 @@ button {
     }
 
     .words-mm {
-        margin-top: 10%;
+        margin-top: 5%;
     }
 
     .words-p {
@@ -430,7 +434,7 @@ button {
 
 @media (max-width: 600px) {
     .qm {
-        height: 85%;
+        height: 88%;
         left: 80px;
         top: 80px;
     }
