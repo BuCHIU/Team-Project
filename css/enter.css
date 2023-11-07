@@ -388,14 +388,14 @@ button {
     }
 
     .words {
-        max-height: 750px;
+        max-height: 700px;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
     }
 
     .words-mm {
-        margin-top: 5%;
+        margin-top: 80px;
     }
 
     .words-p {
@@ -403,6 +403,11 @@ button {
     }
 }
 
+@media (max-width: 750px) {
+    .words-mm {
+        margin: 10px;
+    }
+}
 @media (max-width: 700px) {
     .qm {
         left: 100px;
@@ -411,15 +416,6 @@ button {
     .mouse {
         max-height: 120px;
         margin: 10px 10px 20px 10px;
-    }
-
-    .words {
-        max-height: 700px;
-        margin-left: 30px;
-    }
-
-    .words-mm {
-        margin: 30px 10px 10px 10px;
     }
 
     .words-ss {
@@ -500,10 +496,9 @@ button {
 }
 
 @media (max-width: 380px) {
-    .mouse {
-        margin: 10px 10px 10px 10px;
+    .hand {
+        height: 100px;
     }
-
     .words-ss {
         margin: 0 5px 0 10px;
     }
