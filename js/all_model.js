@@ -1,8 +1,5 @@
 import * as THREE from 'three';
-
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 let mixer;
@@ -20,33 +17,23 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
-// const pmremGenerator = new THREE.PMREMGenerator(renderer);
 
 // 場景
 const scene = new THREE.Scene();
 scene.background = new THREE.Color("rgb(172, 207, 207)");
-// scene.environment = pmremGenerator.fromScene(new RoomEnvironment(renderer), 0.04).texture;
 
 // 燈光
 light = new THREE.HemisphereLight(0xfcfcfa, 0x3f3f4a, 7);
-// light = new THREE.AmbientLight( 0x404040, 50 ); 
-// 0x080820 0xffffbb
 scene.add(light);
 
 // 攝影機
 const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 7000);
-camera.position.set(750, 130, 130);
-
-// 輔助座標軸
-// const axesHelper = new THREE.AxesHelper(1000);
-// scene.add(axesHelper);
-
+camera.position.set(750, 100, 130);
 
 // 鼠標控制
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 130, 130);
+controls.target.set(0, 100, 130);
 controls.update();
-
 
 // 模型牆壁
 const loaderWall = new GLTFLoader();
@@ -68,15 +55,6 @@ loaderFloor.load('model/fLOOR.glb', function (gltf) {
 
 });
 
-// 模型人
-const loaderFall = new GLTFLoader();
-let modelFall;
-loaderFall.load('model/other_models/FALL.glb', function (gltf) {
-
-    modelFall = gltf.scene;
-    // scene.add(modelFall);
-
-});
 
 // 動畫初始狀態
 let screenIsAnimating = false;
@@ -449,8 +427,6 @@ loaderBookA2.load('model/other_models/book-float-new.glb', function (gltf) {
     modelBookA2.position.set( 0, 0, 18);
     scene.add(modelBookA2);
 
-    console.log(gltf);
-
     // 找到動畫
     clipBookA2 = THREE.AnimationClip.findByName(gltf.animations, "BOOK-floatAction");
     if (clipBookA2) {
@@ -627,6 +603,7 @@ loaderCandTall.load('model/chairs_tables/TABLE_AND_CHAIR.glb', function (gltf) {
     loading.classList.add('hide');
 
 },
+    // loading 畫面
     function (load) {
         const percent = load.loaded / load.total;
         const loading_text = window.getComputedStyle(document.querySelector('.loader'), '::before');
@@ -654,7 +631,7 @@ window.addEventListener('mousemove', onMouseMove);
 window.addEventListener('click', onClick);
 
 // 說明欄
-const questionArea = window.questionArea;
+const questionArea = document.querySelector('.question-area');
 const words = document.createElement('p');
 questionArea.appendChild(words);
 
@@ -663,9 +640,6 @@ function onMouseMove(event) {
     // 更新鼠標的位置
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    // 更新 Raycaster
-    // raycaster.setFromCamera(mouse, camera);
 
     // 重新計算鼠標懸停的對象
     let intersectsProjectionR = raycaster.intersectObject(modelProjectionR);
@@ -691,8 +665,7 @@ function onMouseMove(event) {
     let intersectsChicken = raycaster.intersectObject(modelOtherNA.children[2]);
     let intersectsNameBoard = raycaster.intersectObject(modelOtherNA.children[3]);
     let intersectsMBA = raycaster.intersectObject(modelOtherNA.children[4]);
-    
-    // console.log(modelOtherA.children);
+
 
     if (intersectsTVsc.length > 0 && TVclosed == true) {
         words.innerHTML = `
@@ -867,8 +840,8 @@ function onMouseMove(event) {
 }
 
 // 影像區
-const proScreen = window.proscreen;
-const closeBtn = window.closebtn;
+const proScreen = document.querySelector('.box');
+const closeBtn = document.querySelector('.box-close');
 let screenPC = document.querySelector('.pc');
 let closeBtnPC = document.querySelector('.pc-close');
 
@@ -876,10 +849,8 @@ let chairplay = true;
 let screenplay = true;
 // 物件被點擊到要做什麼
 function onClick(event) {
-    // raycaster.setFromCamera(mouse, camera);
 
     let intersectsProjectionR = raycaster.intersectObject(modelProjectionR);
-    let intersectsFloor = raycaster.intersectObject(modelFloor);
     let intersectsChair = raycaster.intersectObject(modelChair);
     let intersectsFanSwitch = raycaster.intersectObject(modelFanSwitch);
     let intersectsTVsc = raycaster.intersectObject(modelTVsc);
@@ -890,26 +861,6 @@ function onClick(event) {
     let intersectsACC = raycaster.intersectObject(modelACC);
     let intersectsWBM = raycaster.intersectObject(modelWBM);
     let intersectsLightSwitch = raycaster.intersectObject(modelLightSwitch);
-
-    // 地板變顏色
-    // if (intersectsFloor.length > 0) {
-    //     let colors = [0x8f534f, 0x2f4175, 0x7f5d94, 0xba505c];
-    //     // let indexColor = 0;
-    //     let random = colors[Math.floor(Math.random() * 4)];
-
-    //     let newMaterial = new THREE.MeshStandardMaterial({
-    //         color: random,
-    //         emissive: random,
-    //         roughness: 0.6,
-    //         metalness: 0.1
-    //     });
-
-    //     // intersectsFloor.forEach(object => {
-    //     //     console.log(object);
-    //     //     object.object.material = newMaterial;
-    //     // })
-    //     intersectsFloor[0].object.material = newMaterial;
-    // }
 
     // 椅子播放動畫
     if (intersectsChair.length > 0) {
@@ -930,7 +881,6 @@ function onClick(event) {
     }
 
     // 投影布幕降下來
-    // let screenMode = 0;
     if (intersectsProjectionR.length > 0) {
         if (mixerScreen) {
             if (screenplay) {
@@ -1076,6 +1026,7 @@ function onClick(event) {
                     soundAC.play();
                 }
             });
+            isAnyACRunning = !isAnyACRunning;
         }
     }
 
@@ -1093,7 +1044,6 @@ function onClick(event) {
 }
 
 renderer.domElement.style.touchAction = 'none';
-
 
 function animate() {
 

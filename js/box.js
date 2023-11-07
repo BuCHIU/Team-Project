@@ -1,23 +1,11 @@
-const logoBtn = document.querySelector('.logo');
-logoBtn.addEventListener('click', () => {
-    window.location.href = "index.html";
-});
-
-const exitBtn = document.querySelector('.exit');
-exitBtn.addEventListener('click', () => {
-    window.location.href = "index.html";
-});
-
-
-// 載入頁面後出現說明欄 5 秒
+// 宣告
 window.questionIcon = document.querySelector('.question');
-window.questionArea = document.querySelector('.question-area');
 window.qm = document.querySelector('.qm');
-const qmWords = document.createElement('div');
 window.closeBtn = document.querySelector('.close');
-qmWords.classList.add("words");
-if ( window.innerWidth >= 700 ) {
-        
+const qmWords = document.querySelector('.words');
+
+// 以裝置寬度判斷要放什麼說明
+if ( window.innerWidth >= 700 ) {    
     qmWords.innerHTML = `
 <div class="words-m words-mm">
     滑鼠操作
@@ -96,19 +84,16 @@ if ( window.innerWidth >= 700 ) {
     </div>
 </div>`;
 }
-qm.appendChild(qmWords);
-// console.log(window);
+
+// 初次載入頁面 出現說明欄 5 秒後消失
 setTimeout(() => {
     qm.style.display = 'none';
 }, 5000);
 
-
 // 問號出說明
 questionIcon.addEventListener('click', () => {
     questionIcon.src = './img/main_icon/question2.png';
-    qmWords.classList.add("words");
     if ( window.innerWidth >= 700 ) {
-        
         qmWords.innerHTML = `
     <div class="words-m words-mm">
         滑鼠操作
@@ -189,15 +174,22 @@ questionIcon.addEventListener('click', () => {
     }
     qm.style.display = 'flex';
 });
+
+// 叉叉關閉說明欄
 closeBtn.addEventListener('click', () => {
     qm.style.display = 'none';
     qmWords.innerHTML = "";
-})
-
-questionIcon.addEventListener('mouseleave', () => {
-    questionIcon.src = './img/main_icon/question3.png';
 });
 
+// 點框框外就會關閉
+document.addEventListener('click',function(){
+    qm.style.display = 'none';
+},true);
 
-window.proscreen = document.querySelector('.box');
-window.closebtn = document.querySelector('.box-close');
+// 問號的hover變圖
+questionIcon.addEventListener('mouseleave', () => {
+    questionIcon.src = './img/main_icon/question2.png';
+});
+questionIcon.addEventListener('mouseenter', () => {
+    questionIcon.src = './img/main_icon/question3.png';
+});

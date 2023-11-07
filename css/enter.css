@@ -67,12 +67,21 @@ body {
     left: 200px;
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
-    flex-direction: row-reverse;
+    /* flex-direction: row-reverse; */
     /* flex-wrap: wrap; */
     justify-content: space-around;
 }
 
+/* .mouse-control {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
 
+.finger-control {
+    width: 100%;
+    display: flex;
+} */
 
 .close {
     width: 40px;
@@ -214,8 +223,6 @@ p {
 }
 
 .carousel {
-    /* position: absolute; */
-    /* top: -10%; */
     bottom: 5%;
     left: calc(20% / 2);
     width: 80%;
@@ -236,10 +243,6 @@ p {
     padding-left: 20px;
 }
 
-/* #carouselExampleIndicators {
-    height: 300px;
-} */
-
 .close-slide {
     width: 25px;
     margin: 10px;
@@ -257,10 +260,6 @@ button {
     top: 100px !important;
     cursor: url("../img/podium_pc/pointer.ico"), auto;
 }
-
-/* .carousel-inner {
-    height: 300px;
-} */
 
 .words {
     font-size: 20px;
@@ -349,9 +348,6 @@ button {
         max-width: 700px;
     }
 
-    /* .words-p {
-        margin-top: 5%;
-    } */
 }
 
 @media (max-width: 1030px) {
