@@ -1000,14 +1000,22 @@ function onClick(event) {
         closeBtnPC.addEventListener('click', () => {
             screenPC.style.display = 'none';
         })
+        
+        document.addEventListener('click',function(){
+            screenPC.style.display = 'none';
+        },true);
     }
-
+    
     // 投影幕放⋯⋯教室介紹
     if (intersectsScreen.length > 0) {
         proScreen.style.display = 'block';
         closeBtn.addEventListener('click', () => {
             proScreen.style.display = 'none';
         })
+        
+        document.addEventListener('click',function(){
+            proScreen.style.display = 'none';
+        },true);
     }
 
     // 創建音訊
