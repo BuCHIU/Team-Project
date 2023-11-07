@@ -368,17 +368,22 @@ button {
 
     .mouse {
         height: 100px;
+        margin: 10px 10px 10px 30px;
     }
 
     .words {
-        max-height: 700px;
+        max-height: 640px;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
     }
 
+    .words-ss {
+        margin: 0px 0px 0px 30px;
+    }
+
     .words-mm {
-        margin-top: 80px;
+        margin-top: 30px;
     }
 
     .words-p {
@@ -397,7 +402,7 @@ button {
     }
 
     .mouse {
-        max-height: 120px;
+        height: 90px;
         margin: 10px 10px 20px 10px;
     }
 
@@ -415,7 +420,7 @@ button {
     .qm {
         height: 88%;
         left: 80px;
-        top: 80px;
+        top: 60px;
     }
 
     .question-area {
